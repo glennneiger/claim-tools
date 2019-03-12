@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NewClaim from './NewClaim';
+import ViewWindow from './ViewWindow';
 
 class MainView extends Component {
     state ={
@@ -11,6 +12,7 @@ class MainView extends Component {
             <section className='mainview'>
                 <h1>Main Section</h1>
                 <NewClaim />
+                <ViewWindow />
             </section>
         );
     }
