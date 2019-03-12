@@ -5,7 +5,7 @@ class Header extends Component {
         return (
             <div className="header">
                 <header className="App-header">
-                    Header
+                    claim tools
                 </header>
             </div>
         );

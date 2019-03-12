@@ -5,7 +5,7 @@ class Footer extends Component {
         return (
             <div className="footer">
                 <footer className="App-footer">
-                    Footer
+                    an mgp creation
                 </footer>
             </div>
         );
