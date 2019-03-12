@@ -9,7 +9,7 @@ class MainView extends Component {
 
     render() {
         return (
-            <section className='mainview'>
+            <section className='main-view'>
                 <h1>Main Section</h1>
                 <NewClaim />
                 <ViewWindow />
