@@ -19,19 +19,27 @@ function NewClaim (props){
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect1">
                     <Form.Label>Named Insured</Form.Label>
-                    <Form.Control size='sm' type="text" placeholder="Name" />
+                    <Form.Control size='sm' type="text" placeholder="Insured Name" />
+                </Form.Group>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                    <Form.Label>Policy Number</Form.Label>
+                    <Form.Control size='sm' type="text" placeholder="" />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect2">
-                    <Form.Label>Address</Form.Label>
+                    <Form.Label>Insured Address</Form.Label>
+                    <Form.Control size='sm' as="textarea" rows='4' placeholder="Insured Address" />
+                </Form.Group>
+                <Form.Group controlId="exampleForm.ControlSelect1">
+                    <Form.Label>Broker</Form.Label>
+                    <Form.Control size='sm' type="text" placeholder="Broker Name" />
+                </Form.Group>
+                <Form.Group controlId="exampleForm.ControlSelect2">
+                    <Form.Label>Broker Address</Form.Label>
                     <Form.Control size='sm' as="textarea" rows='4' placeholder="Address" />
                 </Form.Group>
-                <Form.Group controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Example textarea</Form.Label>
-                <Form.Control as="textarea" rows="3" />
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
-                </Form.Group>
             </Form>
         </section>
     );
