@@ -32,11 +32,23 @@ class MainView extends Component {
                 <Row>
                     <Col>
                         <section className='claim-window'>
-                            Claim options window
+                            Claim options
+                            <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+                                <Tab eventKey="newclaim" title="new">
+                                    new
+                                </Tab>
+                                <Tab eventKey="report1" title="report1">
+                                    report 1
+                                </Tab>
+                                <Tab eventKey="report2" title="report2" disabled>
+                                    report 2
+                                </Tab>
+                            </Tabs>
                         </section>
                     </Col>
                     <Col>
                         <section className='view-window'>
+                            Data View Window
                             <ViewWindow />
                         </section>
                     </Col>
