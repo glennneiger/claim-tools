@@ -25,6 +25,14 @@ function NewClaim (props){
                     <Form.Label>Policy Number</Form.Label>
                     <Form.Control size='sm' type="text" placeholder="" />
                 </Form.Group>
+                <Form.Group controlId="exampleForm.ControlSelect1">
+                    <Form.Label>Insured Contact</Form.Label>
+                    <Form.Control size='sm' type="text" placeholder="Insured Contact" />
+                </Form.Group>
+                <Form.Group controlId="exampleForm.ControlSelect1">
+                    <Form.Label>Insured Contact Number</Form.Label>
+                    <Form.Control size='sm' type="text" placeholder="numbers only.. we'll format" />
+                </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect2">
                     <Form.Label>Insured Address</Form.Label>
                     <Form.Control size='sm' as="textarea" rows='4' placeholder="Insured Address" />
@@ -36,6 +44,10 @@ function NewClaim (props){
                 <Form.Group controlId="exampleForm.ControlSelect2">
                     <Form.Label>Broker Address</Form.Label>
                     <Form.Control size='sm' as="textarea" rows='4' placeholder="Address" />
+                </Form.Group>
+                <Form.Group controlId="exampleForm.ControlSelect2">
+                    <Form.Label>Forms</Form.Label>
+                    <Form.Control size='sm' as="textarea" rows='7' placeholder="Forms" />
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Submit
