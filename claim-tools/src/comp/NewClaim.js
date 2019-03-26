@@ -5,12 +5,24 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+
+import { Formik } from 'formik';
+
+const schema = yup.object({
+    firstName: yup.string().required(),
+    lastName: yup.string().required(),
+    username: yup.string().required(),
+    city: yup.string().required(),
+    state: yup.string().required(),
+    zip: yup.string().required(),
+    terms: yup.bool().required(),
+});
 class NewClaim extends Component {
     state ={
-        validated: false
+        //validated: false
     }
 
-    handleSubmit(event) {
+    /*handleSubmit(event) {
         const form = event.currentTarget;
 
         if (form.checkValidity() === false) {
@@ -18,12 +30,29 @@ class NewClaim extends Component {
             event.stopPropagation();
         }
         this.setState({ validated: true });
-    }
+    }*/
 
     render () {
-        const { validated } = this.state;
+        //const { validated } = this.state;
 
         return (
+            <Formik
+                validationSchema={schema}
+                onSubmit={console.log}
+                initialValues={{
+                    firstName: 'Mark',
+                    lastName: 'Otto',
+                }}
+            >
+            {({
+                handleSubmit,
+                handleChange,
+                handleBlur,
+                values,
+                touched,
+                isValid,
+                errors,
+            }) => (
             <section>
                 <Form
                 noValidate
