@@ -13,33 +13,39 @@ function NewClaim (props){
     return (
         <section>
             <Form>
-                <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>Claim Number</Form.Label>
-                    <Form.Control size='sm' type="text" placeholder="F06..." />
-                </Form.Group>
+                <Form.Row>
+                    <Form.Group controlId="exampleForm.ControlInput1">
+                        <Form.Label>Claim Number</Form.Label>
+                        <Form.Control size='sm' type="text" placeholder="F06..." />
+                    </Form.Group>
+                    <Form.Group controlId="exampleForm.ControlInput1">
+                        <Form.Label>Policy Number</Form.Label>
+                        <Form.Control size='sm' type="text" placeholder="" />
+                    </Form.Group>
+                </Form.Row>
+                <Form.Row>
+                    <Form.Group controlId="exampleForm.ControlSelect1">
+                        <Form.Label>Insured Contact</Form.Label>
+                        <Form.Control size='sm' type="text" placeholder="Insured Contact" />
+                    </Form.Group>
+                    <Form.Group controlId="exampleForm.ControlSelect1">
+                        <Form.Label>Insured Contact Number</Form.Label>
+                        <Form.Control size='sm' type="text" placeholder="numbers only.. we'll format" />
+                    </Form.Group>
+                </Form.Row>
+                <Form.Row>
                 <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label>Named Insured</Form.Label>
-                    <Form.Control size='sm' type="text" placeholder="Insured Name" />
-                </Form.Group>
-                <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>Policy Number</Form.Label>
-                    <Form.Control size='sm' type="text" placeholder="" />
-                </Form.Group>
-                <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label>Insured Contact</Form.Label>
+                    <Form.Label>Broker Contact</Form.Label>
                     <Form.Control size='sm' type="text" placeholder="Insured Contact" />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label>Insured Contact Number</Form.Label>
+                    <Form.Label>Broker Contact Number</Form.Label>
                     <Form.Control size='sm' type="text" placeholder="numbers only.. we'll format" />
                 </Form.Group>
+            </Form.Row>
                 <Form.Group controlId="exampleForm.ControlSelect2">
                     <Form.Label>Insured Address</Form.Label>
                     <Form.Control size='sm' as="textarea" rows='4' placeholder="Insured Address" />
-                </Form.Group>
-                <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label>Broker</Form.Label>
-                    <Form.Control size='sm' type="text" placeholder="Broker Name" />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect2">
                     <Form.Label>Broker Address</Form.Label>
