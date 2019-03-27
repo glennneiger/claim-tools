@@ -14,13 +14,13 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 const schema = yup.object({
-    firstName: yup.string().required(),
-    lastName: yup.string().required(),
-    username: yup.string().required(),
-    city: yup.string().required(),
-    state: yup.string().required(),
-    zip: yup.string().required(),
-    terms: yup.bool().required(),
+    insuredContact: yup.string().required(),
+    insuredNumber: yup.number().required(),
+    brokerContact: yup.string().required(),
+    brokerNumber: yup.number().required(),
+    insuredAddress: yup.string().required(),
+    brokerAddress: yup.string().required(),
+    policyForms: yup.string().required(),
 });
 
 function NewClaim () {
@@ -42,111 +42,133 @@ function NewClaim () {
             isValid,
             errors,
         }) => (
-            <Form noValidate onSubmit={handleSubmit}>
+            <Form
+                noValidate
+                onSubmit={ handleSubmit }
+            >
                 <Form.Row>
-                <Form.Group as={Col} md="4" controlId="validationFormik01">
-                    <Form.Label>First name</Form.Label>
-                        <Form.Control
-                            type="text"
-                            name="firstName"
-                            value={values.firstName}
-                            onChange={handleChange}
-                            isValid={touched.firstName && !errors.firstName}
+                    <Col>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Insured Contact</Form.Label>
+                            <Form.Control
+                                size='sm'
+                                type="text"
+                                placeholder="Insured Contact"
+                                name="insuredContact"
+                                value={ values.insuredContact }
+                                onChange={ handleChange }
+                                isValid={ touched.insuredContact && !errors.insuredContact }
+                            />
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">Please provide a valid name</Form.Control.Feedback>
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Insured Contact Number</Form.Label>
+                            <Form.Control
+                                size='sm'
+                                type="text"
+                                placeholder="numbers only.. we'll format"
+                                name="insuredNumber"
+                                value={ values.insuredNumber }
+                                onChange={ handleChange }
+                                isValid={ touched.insuredNumber && !errors.insuredNumber }
+                                />
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">Please provide a valid number</Form.Control.Feedback>
+                        </Form.Group>
+                    </Col>
+                </Form.Row>
+                <Form.Row>
+                    <Col>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Broker Contact</Form.Label>
+                            <Form.Control
+                                size='sm'
+                                type="text"
+                                placeholder="Broker Contact"
+                                name="brokerContact"
+                                value={ values.brokerContact }
+                                onChange={ handleChange }
+                                isValid={ touched.brokerContact && !errors.brokerContact }
+                                />
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">Please provide a valid name</Form.Control.Feedback>
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Broker Contact Number</Form.Label>
+                            <Form.Control
+                                size='sm'
+                                type="text"
+                                placeholder="numbers only.. we'll format"
+                                name="brokerNumber"
+                                value={ values.brokerNumber }
+                                onChange={ handleChange }
+                                isValid={ touched.brokerNumber && !errors.brokerNumber }
+                                />
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">Please provide a valid number</Form.Control.Feedback>
+                        </Form.Group>
+                    </Col>
+                </Form.Row>
+                <Form.Row>
+                    <Col>
+                        <Form.Group controlId="exampleForm.ControlSelect2">
+                            <Form.Label>Insured Address</Form.Label>
+                            <Form.Control
+                                size='sm'
+                                as="textarea"
+                                rows='4'
+                                placeholder="Insured Address"
+                                name="insuredAddress"
+                                value={ values.insuredAddress }
+                                onChange={ handleChange }
+                                isValid={ touched.insuredAddress && !errors.insuredAddress }
+                                />
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">Please provide a valid address</Form.Control.Feedback>
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group controlId="exampleForm.ControlSelect2">
+                            <Form.Label>Broker Address</Form.Label>
+                            <Form.Control
+                                size='sm'
+                                as="textarea"
+                                rows='4'
+                                placeholder="Address"
+                                name="brokerAddress"
+                                value={ values.brokerAddress }
+                                onChange={ handleChange }
+                                isValid={ touched.brokerAddress && !errors.brokerAddress }
+                                />
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">Please provide a valid address</Form.Control.Feedback>
+                        </Form.Group>
+                    </Col>
+                </Form.Row>
+                <Form.Group controlId="exampleForm.ControlSelect2">
+                    <Form.Label>Forms</Form.Label>
+                    <Form.Control
+                        size='sm'
+                        as="textarea"
+                        rows='7'
+                        placeholder="Forms"
+                        name="policyForms"
+                        value={ values.policyForms }
+                        onChange={ handleChange }
+                        isValid={ touched.policyForms && !errors.policyForms }
                         />
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid">Please provide a valid policy forms</Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group as={Col} md="4" controlId="validationFormik02">
-                    <Form.Label>Last name</Form.Label>
-                    <Form.Control
-                        type="text"
-                        name="lastName"
-                        value={values.lastName}
-                        onChange={handleChange}
-                        isValid={touched.firstName && !errors.lastName}
-                    />
-
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group as={Col} md="4" controlId="validationFormikUsername">
-                <Form.Label>Username</Form.Label>
-                <InputGroup>
-                  <InputGroup.Prepend>
-                    <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                  </InputGroup.Prepend>
-                  <Form.Control
-                    type="text"
-                    placeholder="Username"
-                    aria-describedby="inputGroupPrepend"
-                    name="username"
-                    value={values.username}
-                    onChange={handleChange}
-                    isInvalid={!!errors.username}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    {errors.username}
-                  </Form.Control.Feedback>
-                </InputGroup>
-              </Form.Group>
-            </Form.Row>
-            <Form.Row>
-              <Form.Group as={Col} md="6" controlId="validationFormik03">
-                <Form.Label>City</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="City"
-                  name="city"
-                  value={values.city}
-                  onChange={handleChange}
-                  isInvalid={!!errors.city}
-                />
-  
-                <Form.Control.Feedback type="invalid">
-                  {errors.city}
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group as={Col} md="3" controlId="validationFormik04">
-                <Form.Label>State</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="State"
-                  name="state"
-                  value={values.state}
-                  onChange={handleChange}
-                  isInvalid={!!errors.state}
-                />
-                <Form.Control.Feedback type="invalid">
-                  {errors.state}
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group as={Col} md="3" controlId="validationFormik05">
-                <Form.Label>Zip</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Zip"
-                  name="zip"
-                  value={values.zip}
-                  onChange={handleChange}
-                  isInvalid={!!errors.zip}
-                />
-  
-                <Form.Control.Feedback type="invalid">
-                  {errors.zip}
-                </Form.Control.Feedback>
-              </Form.Group>
-            </Form.Row>
-            <Form.Group>
-              <Form.Check
-                required
-                name="terms"
-                label="Agree to terms and conditions"
-                onChange={handleChange}
-                isInvalid={!!errors.terms}
-                feedback={errors.terms}
-                id="validationFormik0"
-              />
-            </Form.Group>
-            <Button type="submit">Submit form</Button>
-          </Form>
+                <Button variant="primary" type="submit">
+                    Submit
+                </Button>
+            </Form>
         )}
         </Formik>
     );
