@@ -83,6 +83,20 @@ function NewClaim () {
                         </Form.Group>
                     </Col>
                 </Form.Row>
+                <Form.Group controlId="exampleForm.ControlSelect1">
+                    <Form.Label>Loss Location</Form.Label>
+                        <Form.Control
+                            size='sm'
+                            type="text"
+                            placeholder="Loss Location Address"
+                            name="lossLocation"
+                            value={ values.lossLocation }
+                            onChange={ handleChange }
+                            isValid={ touched.lossLocation && !errors.lossLocation }
+                            />
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid">Please provide a valid name</Form.Control.Feedback>
+                </Form.Group>
                 <Form.Row>
                     <Col>
                         <Form.Group controlId="exampleForm.ControlSelect1">
@@ -234,7 +248,9 @@ function NewClaim () {
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">Please provide a valid policy forms</Form.Control.Feedback>
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button
+                    variant="primary"
+                    type="submit">
                     Submit
                 </Button>
             </Form>
