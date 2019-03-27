@@ -16,11 +16,15 @@ import * as yup from 'yup';
 const schema = yup.object({
     insuredContact: yup.string().required(),
     insuredNumber: yup.number().required(),
+    insuredEmail: yup.string().email().required(),
     brokerContact: yup.string().required(),
     brokerNumber: yup.number().required(),
+    brokerEmail: yup.string().email().required(),
     insuredAddress: yup.string().required(),
     brokerAddress: yup.string().required(),
     policyForms: yup.string().required(),
+    dateOfLoss: yup.date().required(),
+    policyNumber: yup.string().required()
 });
 
 function NewClaim () {
@@ -112,6 +116,22 @@ function NewClaim () {
                             <Form.Control.Feedback type="invalid">Please provide a valid number</Form.Control.Feedback>
                         </Form.Group>
                     </Col>
+                    <Col>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Insured Contact Email</Form.Label>
+                            <Form.Control
+                                size='sm'
+                                type="email"
+                                placeholder="type email"
+                                name="insuredEmail"
+                                value={ values.insuredEmail }
+                                onChange={ handleChange }
+                                isValid={ touched.insuredEmail && !errors.insuredEmail }
+                                />
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">Please provide a valid email</Form.Control.Feedback>
+                        </Form.Group>
+                    </Col>
                 </Form.Row>
                 <Form.Row>
                     <Col>
@@ -144,6 +164,22 @@ function NewClaim () {
                                 />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">Please provide a valid number</Form.Control.Feedback>
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Broker Contact Email</Form.Label>
+                            <Form.Control
+                                size='sm'
+                                type="email"
+                                placeholder="type email"
+                                name="brokerEmail"
+                                value={ values.brokerEmail }
+                                onChange={ handleChange }
+                                isValid={ touched.brokerEmail && !errors.brokerEmail }
+                                />
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">Please provide a valid email</Form.Control.Feedback>
                         </Form.Group>
                     </Col>
                 </Form.Row>
