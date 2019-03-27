@@ -26,11 +26,10 @@ const schema = yup.object({
 function NewClaim () {
     return (
         <Formik
-            validationSchema={schema}
-            onSubmit={console.log}
+            validationSchema={ schema }
+            onSubmit={ console.log }
             initialValues={{
-            firstName: 'Mark',
-            lastName: 'Otto',
+
             }}
         >
         {({
@@ -46,6 +45,40 @@ function NewClaim () {
                 noValidate
                 onSubmit={ handleSubmit }
             >
+                <Form.Row>
+                    <Col>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Date of Loss</Form.Label>
+                            <Form.Control
+                                size='sm'
+                                type="date"
+                                placeholder="Date of Loss"
+                                name="dateOfLoss"
+                                value={ values.dateOfLoss }
+                                onChange={ handleChange }
+                                isValid={ touched.dateOfLoss && !errors.dateOfLoss }
+                            />
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">Please provide a date</Form.Control.Feedback>
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Policy Number</Form.Label>
+                            <Form.Control
+                                size='sm'
+                                type="text"
+                                placeholder="Policy Number"
+                                name="policyNumber"
+                                value={ values.policyNumber }
+                                onChange={ handleChange }
+                                isValid={ touched.policyNumber && !errors.policyNumber }
+                                />
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">Please provide a valid number</Form.Control.Feedback>
+                        </Form.Group>
+                    </Col>
+                </Form.Row>
                 <Form.Row>
                     <Col>
                         <Form.Group controlId="exampleForm.ControlSelect1">
