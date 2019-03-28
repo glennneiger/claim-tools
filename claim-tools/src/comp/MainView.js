@@ -24,7 +24,8 @@ const schema = yup.object({
     brokerAddress: yup.string().required(),
     policyForms: yup.string().required(),
     dateOfLoss: yup.date().required(),
-    policyNumber: yup.string().required()
+    policyNumber: yup.string().required(),
+    lossLocation: yup.string().required()
 });
 
 function NewClaim () {
@@ -230,6 +231,56 @@ function NewClaim () {
                                 />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">Please provide a valid address</Form.Control.Feedback>
+                        </Form.Group>
+                    </Col>
+                </Form.Row>
+                <Form.Row>
+                    <Col>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Adjuster Contact</Form.Label>
+                            <Form.Control
+                                size='sm'
+                                type="text"
+                                placeholder="Adjuster Contact"
+                                name="adjusterContact"
+                                value={ values.adjusterContact }
+                                onChange={ handleChange }
+                                isValid={ touched.iadjusterContact && !errors.adjusterContact }
+                            />
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">Please provide a valid name</Form.Control.Feedback>
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Adjuster Contact Number</Form.Label>
+                            <Form.Control
+                                size='sm'
+                                type="text"
+                                placeholder="numbers only.. we'll format"
+                                name="adjusterNumber"
+                                value={ values.adjusterNumber }
+                                onChange={ handleChange }
+                                isValid={ touched.adjusterNumber && !errors.adjusterNumber }
+                                />
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">Please provide a valid number</Form.Control.Feedback>
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Adjuster Contact Email</Form.Label>
+                            <Form.Control
+                                size='sm'
+                                type="email"
+                                placeholder="type email"
+                                name="adjusterEmail"
+                                value={ values.adjusterEmail }
+                                onChange={ handleChange }
+                                isValid={ touched.adjusterEmail && !errors.adjusterEmail }
+                                />
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">Please provide a valid email</Form.Control.Feedback>
                         </Form.Group>
                     </Col>
                 </Form.Row>
