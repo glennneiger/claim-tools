@@ -14,18 +14,21 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 const schema = yup.object({
+    dateOfLoss: yup.date().required(),
+    policyNumber: yup.string().required(),
+    lossLocation: yup.string().required(),
     insuredContact: yup.string().required(),
     insuredNumber: yup.number().required(),
     insuredEmail: yup.string().email().required(),
+    insuredAddress: yup.string().required(),
     brokerContact: yup.string().required(),
     brokerNumber: yup.number().required(),
     brokerEmail: yup.string().email().required(),
-    insuredAddress: yup.string().required(),
     brokerAddress: yup.string().required(),
+    adjusterContact: yup.string(),
+    adjusterNumber: yup.string(),
+    adjusterEmail: yup.string(),
     policyForms: yup.string().required(),
-    dateOfLoss: yup.date().required(),
-    policyNumber: yup.string().required(),
-    lossLocation: yup.string().required()
 });
 
 function NewClaim () {
