@@ -35,7 +35,12 @@ function NewClaim () {
     return (
         <Formik
             validationSchema={ schema }
-            onSubmit={ console.log }
+            onSubmit={(values, { setSubmitting }) => {
+                setTimeout(() => {
+                    alert(JSON.stringify(values, null, 2));
+                    setSubmitting(false);
+                }, 400);
+            }}
             initialValues={{
 
             }}
