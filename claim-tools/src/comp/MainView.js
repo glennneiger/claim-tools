@@ -31,13 +31,14 @@ const schema = yup.object({
     policyForms: yup.string().required(),
 });
 
-function NewClaim () {
+function NewClaim (props) {
     return (
         <Formik
             validationSchema={ schema }
             onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
                     alert(JSON.stringify(values, null, 2));
+                    props.updateCurrentClaim(values);
                     setSubmitting(false);
                 }, 400);
             }}
@@ -69,6 +70,7 @@ function NewClaim () {
                                 name="dateOfLoss"
                                 value={ values.dateOfLoss }
                                 onChange={ handleChange }
+                                onBlur={ handleBlur }
                                 isValid={ touched.dateOfLoss && !errors.dateOfLoss }
                             />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -85,6 +87,7 @@ function NewClaim () {
                                 name="policyNumber"
                                 value={ values.policyNumber }
                                 onChange={ handleChange }
+                                onBlur={ handleBlur }
                                 isValid={ touched.policyNumber && !errors.policyNumber }
                                 />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -101,6 +104,7 @@ function NewClaim () {
                             name="lossLocation"
                             value={ values.lossLocation }
                             onChange={ handleChange }
+                            onBlur={ handleBlur }
                             isValid={ touched.lossLocation && !errors.lossLocation }
                             />
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -117,6 +121,7 @@ function NewClaim () {
                                 name="insuredContact"
                                 value={ values.insuredContact }
                                 onChange={ handleChange }
+                                onBlur={ handleBlur }
                                 isValid={ touched.insuredContact && !errors.insuredContact }
                             />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -133,6 +138,7 @@ function NewClaim () {
                                 name="insuredNumber"
                                 value={ values.insuredNumber }
                                 onChange={ handleChange }
+                                onBlur={ handleBlur }
                                 isValid={ touched.insuredNumber && !errors.insuredNumber }
                                 />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -149,6 +155,7 @@ function NewClaim () {
                                 name="insuredEmail"
                                 value={ values.insuredEmail }
                                 onChange={ handleChange }
+                                onBlur={ handleBlur }
                                 isValid={ touched.insuredEmail && !errors.insuredEmail }
                                 />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -167,6 +174,7 @@ function NewClaim () {
                                 name="brokerContact"
                                 value={ values.brokerContact }
                                 onChange={ handleChange }
+                                onBlur={ handleBlur }
                                 isValid={ touched.brokerContact && !errors.brokerContact }
                                 />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -183,6 +191,7 @@ function NewClaim () {
                                 name="brokerNumber"
                                 value={ values.brokerNumber }
                                 onChange={ handleChange }
+                                onBlur={ handleBlur }
                                 isValid={ touched.brokerNumber && !errors.brokerNumber }
                                 />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -199,6 +208,7 @@ function NewClaim () {
                                 name="brokerEmail"
                                 value={ values.brokerEmail }
                                 onChange={ handleChange }
+                                onBlur={ handleBlur }
                                 isValid={ touched.brokerEmail && !errors.brokerEmail }
                                 />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -218,6 +228,7 @@ function NewClaim () {
                                 name="insuredAddress"
                                 value={ values.insuredAddress }
                                 onChange={ handleChange }
+                                onBlur={ handleBlur }
                                 isValid={ touched.insuredAddress && !errors.insuredAddress }
                                 />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -235,6 +246,7 @@ function NewClaim () {
                                 name="brokerAddress"
                                 value={ values.brokerAddress }
                                 onChange={ handleChange }
+                                onBlur={ handleBlur }
                                 isValid={ touched.brokerAddress && !errors.brokerAddress }
                                 />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -253,6 +265,7 @@ function NewClaim () {
                                 name="adjusterContact"
                                 value={ values.adjusterContact }
                                 onChange={ handleChange }
+                                onBlur={ handleBlur }
                                 isValid={ touched.iadjusterContact && !errors.adjusterContact }
                             />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -269,6 +282,7 @@ function NewClaim () {
                                 name="adjusterNumber"
                                 value={ values.adjusterNumber }
                                 onChange={ handleChange }
+                                onBlur={ handleBlur }
                                 isValid={ touched.adjusterNumber && !errors.adjusterNumber }
                                 />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -285,6 +299,7 @@ function NewClaim () {
                                 name="adjusterEmail"
                                 value={ values.adjusterEmail }
                                 onChange={ handleChange }
+                                onBlur={ handleBlur }
                                 isValid={ touched.adjusterEmail && !errors.adjusterEmail }
                                 />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -302,6 +317,7 @@ function NewClaim () {
                         name="policyForms"
                         value={ values.policyForms }
                         onChange={ handleChange }
+                        onBlur={ handleBlur }
                         isValid={ touched.policyForms && !errors.policyForms }
                         />
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -320,7 +336,13 @@ function NewClaim () {
 
 class MainView extends Component {
     state ={
+        currentClaim: null
+    }
 
+    updateCurrentClaim = input => {
+        this.setState({
+            currentClaim: input
+        });
     }
 
     render() {
@@ -342,7 +364,9 @@ class MainView extends Component {
                             Claim options
                             <Tabs defaultActiveKey="newclaim" id="uncontrolled-tab-example">
                                 <Tab eventKey="newclaim" title="new">
-                                    <NewClaim />
+                                    <NewClaim
+                                    updateCurrentClaim={ this.updateCurrentClaim }
+                                    />
                                 </Tab>
                                 <Tab eventKey="report1" title="report1">
                                     report 1
