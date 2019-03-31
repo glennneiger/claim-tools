@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+
 import NewClaim from './NewClaim';
 import ViewWindow from './ViewWindow';
-//import NewClaim from './NewClaim';
+
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import Container from 'react-bootstrap/Container';
@@ -33,6 +34,14 @@ class MainView extends Component {
                         Search
                     </Button>
                 </Form>
+                <section className='staged-claim'>
+                    <h2>Staged Claim:</h2>
+                    <p>Insured: {this.state.currentClaim ? this.state.currentClaim.insuredName : 'No claim Staged'}</p>
+                    <p>Claim Number: {this.state.currentClaim ? this.state.currentClaim.claimNumber : 'No Claim Staged'}</p>
+                    <p>Policy Number: {this.state.currentClaim ? this.state.currentClaim.policyNUmber : 'No Claim Staged'}</p>
+                    <p>Date of Loss: {this.state.currentClaim ? this.state.currentClaim.dateOfLoss : 'No Claim Staged'}</p>
+
+                </section>
             <Container>
                 <Row>
                     <Col>
