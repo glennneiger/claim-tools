@@ -37,7 +37,21 @@ function NewClaim (props) {
                 }, 400);
             }}
             initialValues={{
-
+                dateOfLoss: '03/15/1986',
+                policyNumber: '1131M5678',
+                lossLocation: '200 Madison Ave - New York, NY 10016',
+                insuredContact: 'Mark J',
+                insuredNumber: 4567890,
+                insuredEmail: 'mp.legend@gmail.com',
+                insuredAddress: '200 Madison Ave - New York, NY 10016',
+                brokerContact: 'Mark J',
+                brokerNumber:  4567890,
+                brokerEmail: 'mp.legend@gmail.com',
+                brokerAddress: '200 Madison Ave - New York, NY 10016',
+                adjusterContact: 'Mark J',
+                adjusterNumber:  4567890,
+                adjusterEmail: 'mp.legend@gmail.com',
+                policyForms: ';)'
             }}
         >
         {({
