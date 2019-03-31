@@ -27,8 +27,8 @@ class MainView extends Component {
             <section className='main-view'>
                 <Form>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Claim Number</Form.Label>
-                        <Form.Control size="sm" type="text" placeholder="Enter claim #" />
+                        <Form.Label>Search Claim</Form.Label>
+                        <Form.Control size="sm" type="text" placeholder="Enter Claim #" />
                     </Form.Group>
                     <Button variant="primary" type="submit">
                         Search
