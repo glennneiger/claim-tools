@@ -81,8 +81,6 @@ function NewClaim (props) {
                                 onBlur={ handleBlur }
                                 isValid={ touched.dateOfLoss && !errors.dateOfLoss }
                             />
-                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                            <Form.Control.Feedback type="invalid">Please provide a date</Form.Control.Feedback>
                         </Form.Group>
                     </Col>
                     <Col>
@@ -98,8 +96,6 @@ function NewClaim (props) {
                                 onBlur={ handleBlur }
                                 isValid={ touched.policyNumber && !errors.policyNumber }
                                 />
-                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                            <Form.Control.Feedback type="invalid">Please provide a valid number</Form.Control.Feedback>
                         </Form.Group>
                     </Col>
                 </Form.Row>
@@ -115,8 +111,6 @@ function NewClaim (props) {
                             onBlur={ handleBlur }
                             isValid={ touched.lossLocation && !errors.lossLocation }
                             />
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                    <Form.Control.Feedback type="invalid">Please provide a valid name</Form.Control.Feedback>
                 </Form.Group>
                 <Form.Row>
                     <Col>
@@ -132,8 +126,6 @@ function NewClaim (props) {
                                 onBlur={ handleBlur }
                                 isValid={ touched.insuredContact && !errors.insuredContact }
                             />
-                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                            <Form.Control.Feedback type="invalid">Please provide a valid name</Form.Control.Feedback>
                         </Form.Group>
                     </Col>
                     <Col>
@@ -149,8 +141,6 @@ function NewClaim (props) {
                                 onBlur={ handleBlur }
                                 isValid={ touched.insuredNumber && !errors.insuredNumber }
                                 />
-                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                            <Form.Control.Feedback type="invalid">Please provide a valid number</Form.Control.Feedback>
                         </Form.Group>
                     </Col>
                     <Col>
@@ -166,8 +156,6 @@ function NewClaim (props) {
                                 onBlur={ handleBlur }
                                 isValid={ touched.insuredEmail && !errors.insuredEmail }
                                 />
-                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                            <Form.Control.Feedback type="invalid">Please provide a valid email</Form.Control.Feedback>
                         </Form.Group>
                     </Col>
                 </Form.Row>
@@ -185,8 +173,6 @@ function NewClaim (props) {
                                 onBlur={ handleBlur }
                                 isValid={ touched.brokerContact && !errors.brokerContact }
                                 />
-                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                            <Form.Control.Feedback type="invalid">Please provide a valid name</Form.Control.Feedback>
                         </Form.Group>
                     </Col>
                     <Col>
@@ -202,8 +188,6 @@ function NewClaim (props) {
                                 onBlur={ handleBlur }
                                 isValid={ touched.brokerNumber && !errors.brokerNumber }
                                 />
-                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                            <Form.Control.Feedback type="invalid">Please provide a valid number</Form.Control.Feedback>
                         </Form.Group>
                     </Col>
                     <Col>
@@ -219,8 +203,6 @@ function NewClaim (props) {
                                 onBlur={ handleBlur }
                                 isValid={ touched.brokerEmail && !errors.brokerEmail }
                                 />
-                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                            <Form.Control.Feedback type="invalid">Please provide a valid email</Form.Control.Feedback>
                         </Form.Group>
                     </Col>
                 </Form.Row>
@@ -239,8 +221,6 @@ function NewClaim (props) {
                                 onBlur={ handleBlur }
                                 isValid={ touched.insuredAddress && !errors.insuredAddress }
                                 />
-                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                            <Form.Control.Feedback type="invalid">Please provide a valid address</Form.Control.Feedback>
                         </Form.Group>
                     </Col>
                     <Col>
@@ -257,8 +237,6 @@ function NewClaim (props) {
                                 onBlur={ handleBlur }
                                 isValid={ touched.brokerAddress && !errors.brokerAddress }
                                 />
-                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                            <Form.Control.Feedback type="invalid">Please provide a valid address</Form.Control.Feedback>
                         </Form.Group>
                     </Col>
                 </Form.Row>
@@ -276,8 +254,6 @@ function NewClaim (props) {
                                 onBlur={ handleBlur }
                                 isValid={ touched.iadjusterContact && !errors.adjusterContact }
                             />
-                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                            <Form.Control.Feedback type="invalid">Please provide a valid name</Form.Control.Feedback>
                         </Form.Group>
                     </Col>
                     <Col>
@@ -293,8 +269,6 @@ function NewClaim (props) {
                                 onBlur={ handleBlur }
                                 isValid={ touched.adjusterNumber && !errors.adjusterNumber }
                                 />
-                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                            <Form.Control.Feedback type="invalid">Please provide a valid number</Form.Control.Feedback>
                         </Form.Group>
                     </Col>
                     <Col>
@@ -310,8 +284,6 @@ function NewClaim (props) {
                                 onBlur={ handleBlur }
                                 isValid={ touched.adjusterEmail && !errors.adjusterEmail }
                                 />
-                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                            <Form.Control.Feedback type="invalid">Please provide a valid email</Form.Control.Feedback>
                         </Form.Group>
                     </Col>
                 </Form.Row>
@@ -328,8 +300,6 @@ function NewClaim (props) {
                         onBlur={ handleBlur }
                         isValid={ touched.policyForms && !errors.policyForms }
                         />
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                    <Form.Control.Feedback type="invalid">Please provide a valid policy forms</Form.Control.Feedback>
                 </Form.Group>
                 <Button
                     variant="primary"

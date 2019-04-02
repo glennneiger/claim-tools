@@ -48,7 +48,7 @@ class MainView extends Component {
                         }, 400);
                     }}
                     initialValues={{
-
+                        claimNumber: 'F0689987'
                     }}
                 >
                 {({
@@ -96,15 +96,15 @@ class MainView extends Component {
                         <section className='claim-window'>
                             Claim options
                             <Tabs defaultActiveKey="newclaim" id="uncontrolled-tab-example">
-                                <Tab eventKey="newclaim" title="new">
+                                <Tab eventKey="initialInfo" title="Initial Info">
                                     <NewClaim
                                         updateCurrentClaim={ this.updateCurrentClaim }
                                     />
                                 </Tab>
-                                <Tab eventKey="report1" title="report1">
+                                <Tab eventKey="firstContact" title="First Contact">
                                     report 1
                                 </Tab>
-                                <Tab eventKey="report2" title="report2" disabled>
+                                <Tab eventKey="Settlement" title="Settlement" disabled>
                                     report 2
                                 </Tab>
                             </Tabs>
