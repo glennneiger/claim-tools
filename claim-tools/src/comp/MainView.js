@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import NewClaim from './NewClaim';
 import ViewWindow from './ViewWindow';
+import InitialContact from './InitialContact';
 
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
@@ -102,7 +103,10 @@ class MainView extends Component {
                                     />
                                 </Tab>
                                 <Tab eventKey="firstContact" title="First Contact">
-                                    report 1
+                                    <InitialContact
+                                        claimNumber={ this.state.currentClaimNumber }
+                                        claimData={ this.state.currentClaimData }
+                                    />
                                 </Tab>
                                 <Tab eventKey="Settlement" title="Settlement" disabled>
                                     report 2

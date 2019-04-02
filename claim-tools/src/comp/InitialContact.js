@@ -1,8 +1,4 @@
-//https://react-bootstrap.github.io/components/forms/ 03.26.19
-
-//https://github.com/jquense/yup#install 04.02.19
-
-import React from 'react';//import NewClaim from './NewClaim';
+import React from 'react';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -27,17 +23,10 @@ const schema = yup.object({
     policyForms: yup.string().required(),
 });
 
-function NewClaim (props) {
+function InitialContact (props) {
     return (
         <Formik
             validationSchema={ schema }
-            onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2));
-                    props.updateCurrentClaim(values);
-                    setSubmitting(false);
-                }, 400);
-            }}
             initialValues={{
                 dateOfLoss: '03/15/1986',
                 policyNumber: '1131M5678',
@@ -57,20 +46,18 @@ function NewClaim (props) {
             }}
         >
         {({
-            handleSubmit,
             handleChange,
             handleBlur,
             values,
             touched,
-            isValid,
             errors,
         }) => (
             <Form
                 noValidate
-                onSubmit={ handleSubmit }
             >
                 <Form.Row>
                     <Col>
+                        <h3>Contact Email</h3>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Date of Loss</Form.Label>
                             <Form.Control
@@ -314,4 +301,4 @@ function NewClaim (props) {
     );
 }
 
-export default NewClaim;
+export default InitialContact;
