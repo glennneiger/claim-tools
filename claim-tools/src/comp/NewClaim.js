@@ -33,7 +33,6 @@ function NewClaim (props) {
             validationSchema={ schema }
             onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2));
                     props.updateCurrentClaim(values);
                     setSubmitting(false);
                 }, 400);
