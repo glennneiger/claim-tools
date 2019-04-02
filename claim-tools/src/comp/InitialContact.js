@@ -8,9 +8,9 @@ import * as yup from 'yup';
 
 function InitialContact (props) {
 
-    const contactEmailBody = `ajhbdvhjbsf
-            Hi Asshole!
-    By Asshole!!`;
+    const contactEmailBody = `${ props.claimData ? props.claimData.insuredContact : 'name not found'},
+Hi Asshole!
+By Asshole!!`;
 
     return (
         <Form>
