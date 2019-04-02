@@ -1,9 +1,7 @@
 import React from 'react';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import { Formik } from 'formik';
-import * as yup from 'yup';
+import ClipIcon from './ClipIcon';
 
 
 function InitialContact (props) {
@@ -22,6 +20,7 @@ By Asshole!!`;
                     type="text"
                     placeholder={ props.claimData ? props.claimData.insuredEmail : 'No Email Found - Stage Claim'}
                     />
+                <ClipIcon />
             </Form.Group>
             <Form.Group controlId="formBasicEmail">
                 <Form.Label>Carbon Copies</Form.Label>
