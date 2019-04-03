@@ -6,8 +6,7 @@ import ClipIcon from './ClipIcon';
 
 class InitialContact extends Component {
     state ={
-        firstContactMade: false,
-        firstContactNotMade: false,
+        contactMade: false,
         subroSpoliationLanguage: false,
         adjusterContactLine: false,
         requestDocs: false,
@@ -31,6 +30,7 @@ New York, New York 10016`;
     requestDecs = `When you have a moment, could you please forward the ${this.state.propertyType === 'condo' ? 'Condominium By-laws' : 'Proprietary Lease'} for my review?`;
 
     contactNotMadeEmailBody = `${ this.props.claimData ? this.props.claimData.insuredContact : 'name not found'},
+
 This is Matthew Peters from Greater New York Mutual Insurance, the examiner assigned to this case at the home office. I've left a message for you earlier regarding this loss. When you have a moment, please contact me at the information below so we can discuss the case.
 
 ${this.state.subroSpoliationLanguage ? this.subroSpoliationLanguage : ''}
@@ -90,7 +90,7 @@ This is Matthew Peters from Great New York. It was a pleasure speaking with you 
                         size='sm'
                         as="textarea"
                         rows='7'
-                        value={ this.contactNotMadeEmailBody }
+                        value={ this.contactMade ? this.contactMadeEmailBody : this.contactNotMadeEmailBody }
                         />
                 </Form.Group>
                 <ClipIcon
