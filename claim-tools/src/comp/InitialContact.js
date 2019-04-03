@@ -13,10 +13,10 @@ By Asshole!!`;
     return (
         <Form>
             <h4>Initial Contact Email</h4>
-            <Form.Group>
+            <Form.Group
+                controlId="emailContact">
                 <Form.Label>Email Contact</Form.Label>
                 <Form.Control
-                    id="emailContact"
                     size="sm"
                     type="text"
                     value={ props.claimData ? props.claimData.insuredEmail : 'No Email Found - Stage Claim'}
@@ -25,23 +25,32 @@ By Asshole!!`;
                     fieldId='emailContact'
                 />
             </Form.Group>
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group
+                controlId="emailCarbonCopy">
                 <Form.Label>Carbon Copies</Form.Label>
                 <Form.Control
                     size="sm"
                     type="text"
                     value={ `${ props.claimData ? props.claimData.adjusterEmail : 'No Email Found - Stage Claim' }; ${ props.claimData ? props.claimData.brokerEmail : 'No Email Found - Stage Claim' }`}
                     />
+                <ClipIcon
+                    fieldId='emailCarbonCopy'
+                />
             </Form.Group>
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group
+                controlId="contactEmailSubject">
                 <Form.Label>Subject</Form.Label>
                 <Form.Control
                     size="sm"
                     type="text"
                     value={ `Contact Email - GNY Claim: ${ props.claimNumber ? props.claimNumber : 'Claim Not Found - Stage Claim' } - ${ props.claimData ? props.claimData.insuredName : 'Insured Name Not Found - Stage Claim' } - Location: ${ props.claimData ? props.claimData.insuredAddress : 'Adress Not Found - Stage Claim' }`}
                     />
+                <ClipIcon
+                    fieldId='contactEmailSubject'
+                />
             </Form.Group>
-            <Form.Group controlId="exampleForm.ControlSelect2">
+            <Form.Group
+                controlId="contactEmailBody">
                 <Form.Label>Email Body</Form.Label>
                 <Form.Control
                     size='sm'
@@ -50,6 +59,9 @@ By Asshole!!`;
                     value={ contactEmailBody }
                     />
             </Form.Group>
+            <ClipIcon
+                fieldId='contactEmailBody'
+            />
         </Form>
     )
 }
