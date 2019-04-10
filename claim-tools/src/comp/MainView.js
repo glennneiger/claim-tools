@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import NewClaim from './NewClaim';
 import ViewWindow from './ViewWindow';
 import InitialContact from './InitialContact';
+import Settlement from './Settlement';
 
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
@@ -108,8 +109,8 @@ class MainView extends Component {
                                         claimData={ this.state.currentClaimData }
                                     />
                                 </Tab>
-                                <Tab eventKey="Settlement" title="Settlement" disabled>
-                                    report 2
+                                <Tab eventKey="settlement" title="Settlement">
+                                    <Settlement />
                                 </Tab>
                             </Tabs>
                         </section>
