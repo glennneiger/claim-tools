@@ -6,12 +6,14 @@ import ClipIcon from './ClipIcon';
 
 class InitialContact extends Component {
     state ={
-        contactMade: false,
+        contactMade: true,
         subroSpoliationLanguage: true,
         adjusterContactLine: true,
-        requestDocs: false,
+        requestDocs: true,
         propertyType: null
     }
+
+/* Email Body Optional Text */
 
     signature = `Thank you,
 
@@ -31,14 +33,20 @@ New York, New York 10016`;
 
 `;
 
-    requestDecs = `When you have a moment, could you please forward the ${this.state.propertyType === 'condo' ? 'Condominium By-laws' : 'Proprietary Lease'} for my review?`;
+    requestDocs = `When you have a moment, could you please forward the ${this.state.propertyType === 'condo' ? 'Condominium By-laws' : 'Proprietary Lease'} for my review?
+
+`;
+
+/* Contact Not Made Email Body */
 
     contactNotMadeEmailBody = `${ this.props.claimData ? this.props.claimData.insuredContact : 'name not found'},
 
 This is Matthew Peters from Greater New York Mutual Insurance, the examiner assigned to this case at the home office. I've left a message for you earlier regarding this loss. When you have a moment, please contact me at the information below so we can discuss the case.
 
-${this.state.subroSpoliationLanguage ? this.subroSpoliationLanguage : ''}${this.state.adjusterContactLine ? this.adjusterContactLine : ''}
+${this.state.subroSpoliationLanguage ? this.subroSpoliationLanguage : ''}${this.state.requestDocs ? this.requestDocs : ''}${this.state.adjusterContactLine ? this.adjusterContactLine : ''}
 ${this.signature}`;
+
+/* Contact Made Email Body */
 
     contactMadeEmailBody = `${ this.props.claimData ? this.props.claimData.insuredContact : 'name not found'},
 
