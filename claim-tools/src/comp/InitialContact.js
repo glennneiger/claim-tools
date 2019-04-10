@@ -50,9 +50,13 @@ ${this.signature}`;
 
     contactMadeEmailBody = `${ this.props.claimData ? this.props.claimData.insuredContact : 'name not found'},
 
-This is Matthew Peters from Great New York. It was a pleasure speaking with you earlier. Below is my contact information. Please save it in case you and questions or concerns in the future.`;
+This is Matthew Peters from Great New York. It was a pleasure speaking with you earlier. Below is my contact information. Please save it in case you and questions or concerns in the future.
+
+${this.state.subroSpoliationLanguage ? this.subroSpoliationLanguage : ''}${this.state.requestDocs ? this.requestDocs : ''}${this.state.adjusterContactLine ? this.adjusterContactLine : ''}
+${this.signature}`;
 
     render(){
+
         return (
             <Form>
                 <h4>Initial Contact Email</h4>
@@ -62,7 +66,7 @@ This is Matthew Peters from Great New York. It was a pleasure speaking with you 
                     <Form.Control
                         size="sm"
                         type="text"
-                        value={ this.props.claimData ? this.props.claimData.insuredEmail : 'No Email Found - Stage Claim'}
+                        value={ this.props.claimData ? this.props.claimData.insuredEmail : 'No Email Found'}
                         />
                     <ClipIcon
                         fieldId='emailContact'
@@ -74,7 +78,7 @@ This is Matthew Peters from Great New York. It was a pleasure speaking with you 
                     <Form.Control
                         size="sm"
                         type="text"
-                        value={ `${ this.props.claimData ? this.props.claimData.adjusterEmail : 'No Email Found - Stage Claim' }; ${ this.props.claimData ? this.props.claimData.brokerEmail : 'No Email Found - Stage Claim' }`}
+                        value={ `${ this.props.claimData ? this.props.claimData.adjusterEmail : 'No Email Found' }; ${ this.props.claimData ? this.props.claimData.brokerEmail : 'No Email Found' }`}
                         />
                     <ClipIcon
                         fieldId='emailCarbonCopy'
@@ -99,7 +103,7 @@ This is Matthew Peters from Great New York. It was a pleasure speaking with you 
                         size='sm'
                         as="textarea"
                         rows='7'
-                        value={ this.contactMade ? this.contactMadeEmailBody : this.contactNotMadeEmailBody }
+                        value={ this.state.contactMade ? this.contactMadeEmailBody : this.contactNotMadeEmailBody }
                         />
                 </Form.Group>
                 <ClipIcon
