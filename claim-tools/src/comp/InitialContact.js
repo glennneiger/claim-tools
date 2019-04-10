@@ -7,8 +7,8 @@ import ClipIcon from './ClipIcon';
 class InitialContact extends Component {
     state ={
         contactMade: false,
-        subroSpoliationLanguage: false,
-        adjusterContactLine: false,
+        subroSpoliationLanguage: true,
+        adjusterContactLine: true,
         requestDocs: false,
         propertyType: null
     }
@@ -23,9 +23,13 @@ Greater New York Mutual Insurance
 200 Madison Avenue - Floor 3
 New York, New York 10016`;
 
-    subroSpoliationLanguage = `We ask that you save any evidence from the loss so we may inspect it for possible subrogation.`;
+    subroSpoliationLanguage = `We ask that you save any evidence from the loss so we may inspect it for possible subrogation.
 
-    adjusterContactLine = `I've also copied the outside adjuster, ${this.props.claimData ? this.props.claimData.adjusterContact : 'NAME NOT FOUND'} (${this.props.claimData ? this.props.claimData.adjusterNumber : 'NUMBER NOT FOUND'}) to this email. If you have not already, please contact them to set up an inspection time`;
+`;
+
+    adjusterContactLine = `I've also copied the outside adjuster, ${this.props.claimData ? this.props.claimData.adjusterContact : 'NAME NOT FOUND'} (${this.props.claimData ? this.props.claimData.adjusterNumber : 'NUMBER NOT FOUND'}) to this email. If you have not already, please contact them to set up an inspection time.
+
+`;
 
     requestDecs = `When you have a moment, could you please forward the ${this.state.propertyType === 'condo' ? 'Condominium By-laws' : 'Proprietary Lease'} for my review?`;
 
@@ -33,10 +37,7 @@ New York, New York 10016`;
 
 This is Matthew Peters from Greater New York Mutual Insurance, the examiner assigned to this case at the home office. I've left a message for you earlier regarding this loss. When you have a moment, please contact me at the information below so we can discuss the case.
 
-${this.state.subroSpoliationLanguage ? this.subroSpoliationLanguage : ''}
-
-${this.state.adjusterContactLine ? this.adjusterContactLine : ''}
-
+${this.state.subroSpoliationLanguage ? this.subroSpoliationLanguage : ''}${this.state.adjusterContactLine ? this.adjusterContactLine : ''}
 ${this.signature}`;
 
     contactMadeEmailBody = `${ this.props.claimData ? this.props.claimData.insuredContact : 'name not found'},
