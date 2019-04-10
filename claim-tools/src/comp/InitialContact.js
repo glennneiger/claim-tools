@@ -13,9 +13,10 @@ class InitialContact extends Component {
         propertyType: null
     }
 
+    render(){
 /* Email Body Optional Text */
 
-    signature = `Thank you,
+let signature = `Thank you,
 
 Matt
 
@@ -25,37 +26,35 @@ Greater New York Mutual Insurance
 200 Madison Avenue - Floor 3
 New York, New York 10016`;
 
-    subroSpoliationLanguage = `We ask that you save any evidence from the loss so we may inspect it for possible subrogation.
+    let subroSpoliationLanguage = `We ask that you save any evidence from the loss so we may inspect it for possible subrogation.
 
 `;
 
-    adjusterContactLine = `I've also copied the outside adjuster, ${this.props.claimData ? this.props.claimData.adjusterContact : 'NAME NOT FOUND'} (${this.props.claimData ? this.props.claimData.adjusterNumber : 'NUMBER NOT FOUND'}) to this email. If you have not already, please contact them to set up an inspection time.
+    let adjusterContactLine = `I've also copied the outside adjuster, ${this.props.claimData ? this.props.claimData.adjusterContact : 'NAME NOT FOUND'} (${this.props.claimData ? this.props.claimData.adjusterNumber : 'NUMBER NOT FOUND'}) to this email. If you have not already, please contact them to set up an inspection time.
 
 `;
 
-    requestDocs = `When you have a moment, could you please forward the ${this.state.propertyType === 'condo' ? 'Condominium By-laws' : 'Proprietary Lease'} for my review?
+    let requestDocs = `When you have a moment, could you please forward the ${this.state.propertyType === 'condo' ? 'Condominium By-laws' : 'Proprietary Lease'} for my review?
 
 `;
 
 /* Contact Not Made Email Body */
 
-    contactNotMadeEmailBody = `${ this.props.claimData ? this.props.claimData.insuredContact : 'name not found'},
+    let contactNotMadeEmailBody = `${ this.props.claimData ? this.props.claimData.insuredContact : 'name not found'},
 
 This is Matthew Peters from Greater New York Mutual Insurance, the examiner assigned to this case at the home office. I've left a message for you earlier regarding this loss. When you have a moment, please contact me at the information below so we can discuss the case.
 
-${this.state.subroSpoliationLanguage ? this.subroSpoliationLanguage : ''}${this.state.requestDocs ? this.requestDocs : ''}${this.state.adjusterContactLine ? this.adjusterContactLine : ''}
-${this.signature}`;
+${this.state.subroSpoliationLanguage ? subroSpoliationLanguage : ''}${this.state.requestDocs ? requestDocs : ''}${this.state.adjusterContactLine ? adjusterContactLine : ''}
+${signature}`;
 
 /* Contact Made Email Body */
 
-    contactMadeEmailBody = `${ this.props.claimData ? this.props.claimData.insuredContact : 'name not found'},
+    let contactMadeEmailBody = `${ this.props.claimData ? this.props.claimData.insuredContact : 'name not found'},
 
 This is Matthew Peters from Great New York. It was a pleasure speaking with you earlier. Below is my contact information. Please save it in case you and questions or concerns in the future.
 
-${this.state.subroSpoliationLanguage ? this.subroSpoliationLanguage : ''}${this.state.requestDocs ? this.requestDocs : ''}${this.state.adjusterContactLine ? this.adjusterContactLine : ''}
-${this.signature}`;
-
-    render(){
+${this.state.subroSpoliationLanguage ? subroSpoliationLanguage : ''}${this.state.requestDocs ? requestDocs : ''}${this.state.adjusterContactLine ? adjusterContactLine : ''}
+${signature}`;
 
         return (
             <Form>
@@ -90,7 +89,7 @@ ${this.signature}`;
                     <Form.Control
                         size="sm"
                         type="text"
-                        value={ `Contact Email - GNY Claim: ${ this.props.claimNumber ? this.props.claimNumber : 'Claim Not Found - Stage Claim' } - ${ this.props.claimData ? this.props.claimData.insuredName : 'Insured Name Not Found - Stage Claim' } - Location: ${ this.props.claimData ? this.props.claimData.insuredAddress : 'Adress Not Found - Stage Claim' }`}
+                        value={ `Contact Email - GNY Claim: ${ this.props.claimNumber ? this.props.claimNumber : 'Claim Not Found' } - ${ this.props.claimData ? this.props.claimData.insuredName : 'Insured Name Not Found' } - Location: ${ this.props.claimData ? this.props.claimData.insuredAddress : 'Address Not Found' }`}
                         />
                     <ClipIcon
                         fieldId='contactEmailSubject'
@@ -103,7 +102,7 @@ ${this.signature}`;
                         size='sm'
                         as="textarea"
                         rows='7'
-                        value={ this.state.contactMade ? this.contactMadeEmailBody : this.contactNotMadeEmailBody }
+                        value={ this.state.contactMade ? contactMadeEmailBody : contactNotMadeEmailBody }
                         />
                 </Form.Group>
                 <ClipIcon
