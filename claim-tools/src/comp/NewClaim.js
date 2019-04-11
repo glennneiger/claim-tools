@@ -68,6 +68,7 @@ function NewClaim (props) {
                 noValidate
                 onSubmit={ handleSubmit }
             >
+                <h4>Claim Setup</h4>
                 <Form.Row>
                     <Col>
                         <Form.Group controlId="exampleForm.ControlSelect1">

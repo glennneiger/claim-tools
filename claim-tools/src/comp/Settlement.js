@@ -4,7 +4,7 @@ class Settlement extends Component {
     render() {
         return (
             <section className='settlement-view'>
-                <h1>Settlement Options</h1>
+                <h4>Settlement Options</h4>
             </section>
         );
     }

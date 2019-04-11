@@ -63,7 +63,7 @@ class InitialContact extends Component {
 
     render(){
 /* Email Body Optional Text */
-        const signature = `Thank you,
+        const signature = `Thanks!
 
 Matt
 

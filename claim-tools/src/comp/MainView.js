@@ -4,6 +4,7 @@ import NewClaim from './NewClaim';
 import ViewWindow from './ViewWindow';
 import InitialContact from './InitialContact';
 import Settlement from './Settlement';
+import Misc from './Misc';
 
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
@@ -111,6 +112,9 @@ class MainView extends Component {
                                 </Tab>
                                 <Tab eventKey="settlement" title="Settlement">
                                     <Settlement />
+                                </Tab>
+                                <Tab eventKey="misc" title="Miscellaneous">
+                                    <Misc />
                                 </Tab>
                             </Tabs>
                         </section>
