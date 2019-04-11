@@ -7,9 +7,9 @@ import ClipIcon from './ClipIcon';
 class InitialContact extends Component {
     state ={
         contactMade: false,
-        subroSpoliationLanguage: true,
-        adjusterContactLine: true,
-        requestDocs: true,
+        subroSpoliationLanguage: false,
+        adjusterContactLine: false,
+        requestDocs: false,
         propertyType: null
     }
 
@@ -147,10 +147,10 @@ ${signature}`;
                     <Form.Label>Email Body</Form.Label>
                         <Form.Group
                             controlId='emailBodyOptions'>
-                            <Form.Check inline type="checkbox" label="Contact Made" />
-                            <Form.Check inline type="checkbox" label="Spoliation Language" />
-                            <Form.Check inline type="checkbox" label="Adjuster Contact" />
-                            <Form.Check inline type="checkbox" label="Request Governing Docs" />
+                            <Form.Check inline type="checkbox" label="Contact Made" onChange={ this.toggleContactMade }/>
+                            <Form.Check inline type="checkbox" label="Spoliation Language" onChange={ this.toggleSpoliation } />
+                            <Form.Check inline type="checkbox" label="Adjuster Contact" onChange={ this.toggleAdjusterContact }/>
+                            <Form.Check inline type="checkbox" label="Request Governing Docs" onChange={ this.toggleRequestDocs }/>
                         </Form.Group>
                     <Form.Control
                         size='sm'
