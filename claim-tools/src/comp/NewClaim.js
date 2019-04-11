@@ -33,11 +33,11 @@ function NewClaim (props) {
             validationSchema={ schema }
             onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
-                    props.updateCurrentClaim(values);
+                    props.updateCurrentClaim(values); // passes the data "up" to MainView's state
                     setSubmitting(false);
                 }, 400);
             }}
-            initialValues={{
+            initialValues={{ //delete once finished
                 dateOfLoss: '03/15/1986',
                 policyNumber: '1131M5678',
                 lossLocation: '200 Madison Ave - New York, NY 10016',

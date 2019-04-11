@@ -45,7 +45,7 @@ class MainView extends Component {
                     validationSchema={ schema }
                     onSubmit={(values, { setSubmitting }) => {
                         setTimeout(() => {
-                            alert(JSON.stringify(values, null, 2));
+                            alert(JSON.stringify(values, null, 2)); //alert set to verify text submissions
                             this.updateCurrentClaimNumber(values.claimNumber);
                             setSubmitting(false);
                         }, 400);
