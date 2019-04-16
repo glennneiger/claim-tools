@@ -98,7 +98,7 @@ class MainView extends Component {
                     <Col>
                         <section className='claim-window'>
                             Claim options
-                            <Tabs defaultActiveKey="newclaim" id="uncontrolled-tab-example">
+                            <Tabs defaultActiveKey="settlement" id="uncontrolled-tab-example">
                                 <Tab eventKey="initialInfo" title="Initial Info">
                                     <NewClaim
                                         updateCurrentClaim={ this.updateCurrentClaim }
