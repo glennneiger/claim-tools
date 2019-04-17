@@ -14,15 +14,40 @@ class Settlement extends Component {
         rebuildEstimateSource: 'Estimate Source'
     }
 
+    updateEstimateSource = (event) => {
+        console.log(event)
+        this.setState({
+            rebuildEstimateSource: event.target.value
+        });
+    }
 
     render() {
         return (
             <section className='settlement-view'>
                 <h4>Settlement Options</h4>
-                <InputGroup className="mb-3">
+                <InputGroup className="mb-3" size='sm' >
                     <DropdownButton
                     as={InputGroup.Prepend}
-                    variant="outline-secondary"
+                    //variant="outline-secondary"
+                    title={this.state.rebuildEstimateSource}
+                    id="input-group-dropdown-1"
+                >
+                    <Dropdown.Item as="button" href="#" value='Independent Adjuster' onClick={ this.updateEstimateSource } >Independent Adjuster</Dropdown.Item>
+                    <Dropdown.Item as="button" href="#" value='Builder Consultant' onClick={ this.updateEstimateSource } >Builder Consultant</Dropdown.Item>
+                </DropdownButton>
+                <InputGroup.Prepend>
+                        <InputGroup.Text>RCV</InputGroup.Text>
+                        <InputGroup.Text>$</InputGroup.Text>
+                </InputGroup.Prepend>
+                    <FormControl
+                        placeholder="Dollar Amount"
+                        aria-label="Amount (to the nearest dollar)"
+                    />
+                </InputGroup>
+                <InputGroup className="mb-3" size='sm'>
+                    <DropdownButton
+                    as={InputGroup.Prepend}
+                    //variant="outline-secondary"
                     title={this.state.rebuildEstimateSource}
                     id="input-group-dropdown-1"
                 >
@@ -30,23 +55,13 @@ class Settlement extends Component {
                     <Dropdown.Item href="#">Builder Consultant</Dropdown.Item>
                 </DropdownButton>
                 <InputGroup.Prepend>
-                        <InputGroup.Text>RCV</InputGroup.Text>
+                        <InputGroup.Text>ACV</InputGroup.Text>
                         <InputGroup.Text>$</InputGroup.Text>
                 </InputGroup.Prepend>
                     <FormControl
-                        placeholder="Recipient's username"
+                        placeholder="Dollar Amount"
                         aria-label="Amount (to the nearest dollar)"
                     />
-                </InputGroup>
-                <InputGroup className="mb-3">
-                    <FormControl
-                        placeholder="Recipient's username"
-                        aria-label="Amount (to the nearest dollar)"
-                    />
-                    <InputGroup.Append>
-                        <InputGroup.Text>$</InputGroup.Text>
-                        <InputGroup.Text>0.00</InputGroup.Text>
-                    </InputGroup.Append>
                 </InputGroup>
             </section>
         );
