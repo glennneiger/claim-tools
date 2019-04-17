@@ -15,7 +15,6 @@ class Settlement extends Component {
     }
 
     updateEstimateSource = (event) => {
-        console.log(event)
         this.setState({
             rebuildEstimateSource: event.target.value
         });
