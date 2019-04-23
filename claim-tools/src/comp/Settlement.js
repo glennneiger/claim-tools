@@ -16,7 +16,7 @@ const schema = yup.object({
 });
 class Settlement extends Component {
     state = {
-        rebuildEstimateSource: 'Estimate Source'
+        rebuildEstimateSource: 'Source'
     }
 
     updateEstimateSource = (event) => {
@@ -54,63 +54,65 @@ class Settlement extends Component {
                     <Form
                         onSubmit={ handleSubmit }
                     >
-                    <h4>Settlement Options</h4>
-                    <InputGroup
-                        className="mb-3"
-                        size='sm'
-                        >
-                        <DropdownButton
-                        as={InputGroup.Prepend}
-                        //variant="outline-secondary"
-                        title={this.state.rebuildEstimateSource}
-                        id="input-group-dropdown-1"
-                    >
-                        <Dropdown.Item as="button" href="#" value='Independent Adjuster' onClick={ this.updateEstimateSource } >Independent Adjuster</Dropdown.Item>
-                        <Dropdown.Item as="button" href="#" value='Builder Consultant' onClick={ this.updateEstimateSource } >Builder Consultant</Dropdown.Item>
-                    </DropdownButton>
-                    <InputGroup.Prepend>
-                            <InputGroup.Text>RCV</InputGroup.Text>
-                            <InputGroup.Text>$</InputGroup.Text>
-                    </InputGroup.Prepend>
-                        <FormControl
-                            aria-label="Amount (to the nearest dollar)"
-                            type="number"
-                            placeholder="Dollar Amount"
-                            name="rcv"
-                            value={ values.rcv }
-                            onChange={ handleChange }
-                            onBlur={ handleBlur }
-                            isValid={ touched.rcv && !errors.rcv }
-                        />
-                    </InputGroup>
-                    <InputGroup className="mb-3" size='sm'>
-                        <DropdownButton
-                        as={InputGroup.Prepend}
-                        //variant="outline-secondary"
-                        title={this.state.rebuildEstimateSource}
-                        id="input-group-dropdown-1"
-                    >
-                        <Dropdown.Item href="#">Independent Adjuster</Dropdown.Item>
-                        <Dropdown.Item href="#">Builder Consultant</Dropdown.Item>
-                    </DropdownButton>
-                    <InputGroup.Prepend>
-                            <InputGroup.Text>Hold-Back</InputGroup.Text>
-                            <InputGroup.Text>$</InputGroup.Text>
-                    </InputGroup.Prepend>
-                        <FormControl
-                            aria-label="Amount (to the nearest dollar)"
-                            type="number"
-                            placeholder="Depreciation Hold-Back"
-                            name="depreciation"
-                            value={ values.depreciation }
-                            onChange={ handleChange }
-                            onBlur={ handleBlur }
-                            isValid={ touched.depreciation && !errors.depreciation }
-                        />
-                    </InputGroup>
-                        <Button variant="primary" type="submit">
-                            Search
-                        </Button>
+                        <h4>Settlement Options</h4>
+                            <InputGroup
+                                className="mb-3"
+                                size='sm'
+                                >
+                                <DropdownButton
+                                    as={InputGroup.Prepend}
+                                    //variant="outline-secondary"
+                                    title={this.state.rebuildEstimateSource}
+                                    id="input-group-dropdown-1"
+                                >
+                                <Dropdown.Item as="button" href="#" value='Independent Adjuster' onClick={ this.updateEstimateSource } >Independent Adjuster</Dropdown.Item>
+                                <Dropdown.Item as="button" href="#" value='Builder Consultant' onClick={ this.updateEstimateSource } >Builder Consultant</Dropdown.Item>
+                            </DropdownButton>
+                            <InputGroup.Prepend>
+                                    <InputGroup.Text>RCV</InputGroup.Text>
+                                    <InputGroup.Text>$</InputGroup.Text>
+                            </InputGroup.Prepend>
+                                <FormControl
+                                    aria-label="Amount (to the nearest dollar)"
+                                    type="number"
+                                    placeholder="Dollar Amount"
+                                    name="rcv"
+                                    value={ values.rcv }
+                                    onChange={ handleChange }
+                                    onBlur={ handleBlur }
+                                    isValid={ touched.rcv && !errors.rcv }
+                                />
+                            </InputGroup>
+                            <InputGroup className="mb-3" size='sm'>
+                                <DropdownButton
+                                as={InputGroup.Prepend}
+                                //variant="outline-secondary"
+                                title={this.state.rebuildEstimateSource}
+                                id="input-group-dropdown-1"
+                            >
+                                <Dropdown.Item href="#">Independent Adjuster</Dropdown.Item>
+                                <Dropdown.Item href="#">Builder Consultant</Dropdown.Item>
+                            </DropdownButton>
+                            <InputGroup.Prepend>
+                                    <InputGroup.Text>Hold-Back</InputGroup.Text>
+                                    <InputGroup.Text>$</InputGroup.Text>
+                            </InputGroup.Prepend>
+                                <FormControl
+                                    aria-label="Amount (to the nearest dollar)"
+                                    type="number"
+                                    placeholder="Depreciation Hold-Back"
+                                    name="depreciation"
+                                    value={ values.depreciation }
+                                    onChange={ handleChange }
+                                    onBlur={ handleBlur }
+                                    isValid={ touched.depreciation && !errors.depreciation }
+                                />
+                            </InputGroup>
+                            <Button variant="primary" type="submit"
+                            //onClick={ handleSubmit }
+                            >
+                                Search
+                            </Button>
                     </Form>
             )}
                 </Formik>
