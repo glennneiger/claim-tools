@@ -16,6 +16,36 @@ const schema = yup.object({ //incomplete..complete before shipping
     depreciation: yup.number().required(),
     deductible: yup.number().required(),
 });
+
+function newLineItem (props){
+    return(
+        <InputGroup
+            className="mb-3"
+            size="sm" >
+            <FormControl
+                aria-label="Amount (to the nearest dollar)"
+                type="number"
+                placeholder="Addition FX dumps here"
+                name="rcvTotal"
+                value={ this.values.rcvTotal }
+                onChange={ this.handleChange }
+                onBlur={ this.handleBlur }
+                isValid={ this.touched.rcvTotal && !this.errors.rcvTotal } />
+            <InputGroup.Prepend>
+                <InputGroup.Text>$</InputGroup.Text>
+            </InputGroup.Prepend>
+            <FormControl
+                aria-label="Amount (to the nearest dollar)"
+                type="number"
+                placeholder="Addition FX dumps here"
+                name="rcvTotal"
+                value={ this.values.rcvTotal }
+                onChange={ this.handleChange }
+                onBlur={ this.handleBlur }
+                isValid={ this.touched.rcvTotal && !this.errors.rcvTotal } />
+        </InputGroup>
+    )
+}
 class Settlement extends Component {
     state = {
         rebuildEstimateSource: 'Source',
