@@ -11,7 +11,8 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 const schema = yup.object({
-    claimNumber: yup.string().required(),
+    rcv: yup.number().required(),
+    depreciation: yup.number().required(),
 });
 class Settlement extends Component {
     state = {
@@ -32,12 +33,13 @@ class Settlement extends Component {
                     onSubmit={(values, { setSubmitting }) => {
                         setTimeout(() => {
                             alert(JSON.stringify(values, null, 2)); //alert set to verify text submissions
-                            this.updateCurrentClaimNumber(values.claimNumber);
+                            //this.updateCurrentClaimNumber(values.claimNumber);
                             setSubmitting(false);
                         }, 400);
                     }}
                     initialValues={{
-                        claimNumber: 'F0689987'
+                        rcv: '4567.98',
+                        depreciation: '432.09'
                     }}
                 >
                 {({
@@ -53,7 +55,10 @@ class Settlement extends Component {
                         onSubmit={ handleSubmit }
                     >
                     <h4>Settlement Options</h4>
-                    <InputGroup className="mb-3" size='sm' >
+                    <InputGroup
+                        className="mb-3"
+                        size='sm'
+                        >
                         <DropdownButton
                         as={InputGroup.Prepend}
                         //variant="outline-secondary"
@@ -68,8 +73,14 @@ class Settlement extends Component {
                             <InputGroup.Text>$</InputGroup.Text>
                     </InputGroup.Prepend>
                         <FormControl
-                            placeholder="Dollar Amount"
                             aria-label="Amount (to the nearest dollar)"
+                            type="number"
+                            placeholder="Dollar Amount"
+                            name="rcv"
+                            value={ values.rcv }
+                            onChange={ handleChange }
+                            onBlur={ handleBlur }
+                            isValid={ touched.rcv && !errors.rcv }
                         />
                     </InputGroup>
                     <InputGroup className="mb-3" size='sm'>
@@ -83,12 +94,18 @@ class Settlement extends Component {
                         <Dropdown.Item href="#">Builder Consultant</Dropdown.Item>
                     </DropdownButton>
                     <InputGroup.Prepend>
-                            <InputGroup.Text>ACV</InputGroup.Text>
+                            <InputGroup.Text>Hold-Back</InputGroup.Text>
                             <InputGroup.Text>$</InputGroup.Text>
                     </InputGroup.Prepend>
                         <FormControl
-                            placeholder="Dollar Amount"
                             aria-label="Amount (to the nearest dollar)"
+                            type="number"
+                            placeholder="Depreciation Hold-Back"
+                            name="depreciation"
+                            value={ values.depreciation }
+                            onChange={ handleChange }
+                            onBlur={ handleBlur }
+                            isValid={ touched.depreciation && !errors.depreciation }
                         />
                     </InputGroup>
                         <Button variant="primary" type="submit">
