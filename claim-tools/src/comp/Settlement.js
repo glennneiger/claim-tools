@@ -10,7 +10,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
-const schema = yup.object({
+const schema = yup.object({ //incomplete..complete before shipping
     rcv: yup.number().required(),
     //rcvTotal: yup.number().required(),
     depreciation: yup.number().required(),
@@ -19,7 +19,8 @@ const schema = yup.object({
 class Settlement extends Component {
     state = {
         rebuildEstimateSource: 'Source',
-        depreciationSource: 'Source'
+        depreciationSource: 'Source',
+        estimateLineItems: [{source: 'mitigation', amt: 1.00}]
     }
 
     updateEstimateSource = (event) => {
@@ -34,6 +35,8 @@ class Settlement extends Component {
     }
 
     render() {
+        let {estimateLineItems} = this.state.estimateLineItems;
+
         return (
             <section className='settlement-view'>
             <Formik
@@ -91,8 +94,8 @@ class Settlement extends Component {
                                     isValid={ touched.rcv && !errors.rcv } />
                             </InputGroup>
                             <InputGroup
-                            className="mb-3"
-                            size="sm" >
+                                className="mb-3"
+                                size="sm" >
                                 <InputGroup.Prepend>
                                     <InputGroup.Text>RCV Total</InputGroup.Text>
                                     <InputGroup.Text>$</InputGroup.Text>
@@ -203,7 +206,7 @@ class Settlement extends Component {
                             <Button
                                 variant="primary"
                                 type="submit" >
-                                Search
+                                Generate
                             </Button>
                     </Form>
             )}
