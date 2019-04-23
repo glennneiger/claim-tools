@@ -62,8 +62,7 @@ class Settlement extends Component {
                     errors,
                 }) => (
                     <Form
-                        onSubmit={ handleSubmit }
-                    >
+                        onSubmit={ handleSubmit } >
                         <h4>Settlement Options</h4>
                             <InputGroup
                                 className="mb-3"
@@ -73,8 +72,7 @@ class Settlement extends Component {
                                     as={InputGroup.Prepend}
                                     //variant="outline-secondary"
                                     title={this.state.rebuildEstimateSource}
-                                    id="input-group-dropdown-1"
-                                >
+                                    id="input-group-dropdown-1" >
                                 <Dropdown.Item as="button" href="#" value='Independent Adjuster' onClick={ this.updateEstimateSource } >Independent Adjuster</Dropdown.Item>
                                 <Dropdown.Item as="button" href="#" value='Builder Consultant' onClick={ this.updateEstimateSource } >Builder Consultant</Dropdown.Item>
                             </DropdownButton>
@@ -90,13 +88,11 @@ class Settlement extends Component {
                                     value={ values.rcv }
                                     onChange={ handleChange }
                                     onBlur={ handleBlur }
-                                    isValid={ touched.rcv && !errors.rcv }
-                                />
+                                    isValid={ touched.rcv && !errors.rcv } />
                             </InputGroup>
                             <InputGroup
                             className="mb-3"
-                            size="sm"
-                            >
+                            size="sm" >
                                 <InputGroup.Prepend>
                                     <InputGroup.Text>RCV Total</InputGroup.Text>
                                     <InputGroup.Text>$</InputGroup.Text>
@@ -109,16 +105,16 @@ class Settlement extends Component {
                                     value={ values.rcvTotal }
                                     onChange={ handleChange }
                                     onBlur={ handleBlur }
-                                    isValid={ touched.rcvTotal && !errors.rcvTotal }
-                                />
+                                    isValid={ touched.rcvTotal && !errors.rcvTotal } />
                             </InputGroup>
-                            <InputGroup className="mb-3" size='sm'>
+                            <InputGroup
+                                className="mb-3"
+                                size='sm'>
                                 <DropdownButton
                                 as={InputGroup.Prepend}
                                 //variant="outline-secondary"
                                 title={this.state.depreciationSource}
-                                id="input-group-dropdown-1"
-                                >
+                                id="input-group-dropdown-1" >
                                 <Dropdown.Item as="button" href="#" value='Independent Adjuster' onClick={ this.updateDepreciationSource } >Independent Adjuster</Dropdown.Item>
                                 <Dropdown.Item as="button" href="#" value='Builder Consultant' onClick={ this.updateDepreciationSource } >Builder Consultant</Dropdown.Item>
                             </DropdownButton>
@@ -134,13 +130,28 @@ class Settlement extends Component {
                                     value={ values.depreciation }
                                     onChange={ handleChange }
                                     onBlur={ handleBlur }
-                                    isValid={ touched.depreciation && !errors.depreciation }
-                                />
+                                    isValid={ touched.depreciation && !errors.depreciation } />
                             </InputGroup>
                             <InputGroup
                                 className="mb-3"
-                                size="sm"
-                                >
+                                size="sm" >
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>ACV Total</InputGroup.Text>
+                                    <InputGroup.Text>$</InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <FormControl
+                                    aria-label="Amount (to the nearest dollar)"
+                                    type="number"
+                                    placeholder="Addition FX dumps here"
+                                    name="acvTotal"
+                                    value={ values.acvTotal }
+                                    onChange={ handleChange }
+                                    onBlur={ handleBlur }
+                                    isValid={ touched.acvTotal && !errors.acvTotal } />
+                            </InputGroup>
+                            <InputGroup
+                                className="mb-3"
+                                size="sm" >
                                 <InputGroup.Prepend>
                                     <InputGroup.Text>Less Deductible</InputGroup.Text>
                                     <InputGroup.Text>$</InputGroup.Text>
@@ -153,13 +164,45 @@ class Settlement extends Component {
                                     value={ values.deductible }
                                     onChange={ handleChange }
                                     onBlur={ handleBlur }
-                                    isValid={ touched.deductible && !errors.deductible }
-                                />
+                                    isValid={ touched.deductible && !errors.deductible } />
+                            </InputGroup>
+                            <InputGroup
+                                className="mb-3"
+                                size="sm" >
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>Less PTD</InputGroup.Text>
+                                    <InputGroup.Text>$</InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <FormControl
+                                    aria-label="Amount (to the nearest dollar)"
+                                    type="number"
+                                    placeholder="Paid to Date"
+                                    name="paidToDate"
+                                    value={ values.paidToDate }
+                                    onChange={ handleChange }
+                                    onBlur={ handleBlur }
+                                    isValid={ touched.paidToDate && !errors.paidToDate } />
+                            </InputGroup>
+                            <InputGroup
+                                className="mb-3"
+                                size="sm" >
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>ACV/RCV Payment</InputGroup.Text>
+                                    <InputGroup.Text>$</InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <FormControl
+                                    aria-label="Amount (to the nearest dollar)"
+                                    type="number"
+                                    placeholder="payment"
+                                    name="payment"
+                                    value={ values.payment }
+                                    onChange={ handleChange }
+                                    onBlur={ handleBlur }
+                                    isValid={ touched.payment && !errors.payment } />
                             </InputGroup>
                             <Button
                                 variant="primary"
-                                type="submit"
-                            >
+                                type="submit" >
                                 Search
                             </Button>
                     </Form>
