@@ -12,7 +12,9 @@ import * as yup from 'yup';
 
 const schema = yup.object({
     rcv: yup.number().required(),
+    //rcvTotal: yup.number().required(),
     depreciation: yup.number().required(),
+    deductible: yup.number().required(),
 });
 class Settlement extends Component {
     state = {
@@ -44,8 +46,10 @@ class Settlement extends Component {
                         }, 400);
                     }}
                     initialValues={{
-                        rcv: '4567.98',
-                        depreciation: '432.09'
+                        rcv: 3456.98,
+                        depreciation: 6789.98,
+                        deductible: 5000.00,
+                        rcvTotal: 'RCV Total'
                     }}
                 >
                 {({
@@ -89,6 +93,25 @@ class Settlement extends Component {
                                     isValid={ touched.rcv && !errors.rcv }
                                 />
                             </InputGroup>
+                            <InputGroup
+                            className="mb-3"
+                            size="sm"
+                            >
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>RCV Total</InputGroup.Text>
+                                    <InputGroup.Text>$</InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <FormControl
+                                    aria-label="Amount (to the nearest dollar)"
+                                    type="number"
+                                    placeholder="Addition FX dumps here"
+                                    name="rcvTotal"
+                                    value={ values.rcvTotal }
+                                    onChange={ handleChange }
+                                    onBlur={ handleBlur }
+                                    isValid={ touched.rcvTotal && !errors.rcvTotal }
+                                />
+                            </InputGroup>
                             <InputGroup className="mb-3" size='sm'>
                                 <DropdownButton
                                 as={InputGroup.Prepend}
@@ -96,7 +119,7 @@ class Settlement extends Component {
                                 title={this.state.depreciationSource}
                                 id="input-group-dropdown-1"
                                 >
-                                <Dropdown.Item as="button" href="#" value='Independent Adjuster' onClick={ this.uupdateDepreciationSource } >Independent Adjuster</Dropdown.Item>
+                                <Dropdown.Item as="button" href="#" value='Independent Adjuster' onClick={ this.updateDepreciationSource } >Independent Adjuster</Dropdown.Item>
                                 <Dropdown.Item as="button" href="#" value='Builder Consultant' onClick={ this.updateDepreciationSource } >Builder Consultant</Dropdown.Item>
                             </DropdownButton>
                             <InputGroup.Prepend>
@@ -112,6 +135,25 @@ class Settlement extends Component {
                                     onChange={ handleChange }
                                     onBlur={ handleBlur }
                                     isValid={ touched.depreciation && !errors.depreciation }
+                                />
+                            </InputGroup>
+                            <InputGroup
+                                className="mb-3"
+                                size="sm"
+                                >
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>Less Deductible</InputGroup.Text>
+                                    <InputGroup.Text>$</InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <FormControl
+                                    aria-label="Amount (to the nearest dollar)"
+                                    type="number"
+                                    placeholder="Deductible Amount"
+                                    name="deductible"
+                                    value={ values.deductible }
+                                    onChange={ handleChange }
+                                    onBlur={ handleBlur }
+                                    isValid={ touched.deductible && !errors.deductible }
                                 />
                             </InputGroup>
                             <Button
