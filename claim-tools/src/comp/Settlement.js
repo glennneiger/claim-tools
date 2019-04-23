@@ -16,12 +16,18 @@ const schema = yup.object({
 });
 class Settlement extends Component {
     state = {
-        rebuildEstimateSource: 'Source'
+        rebuildEstimateSource: 'Source',
+        depreciationSource: 'Source'
     }
 
     updateEstimateSource = (event) => {
         this.setState({
             rebuildEstimateSource: event.target.value
+        });
+    }
+    updateDepreciationSource = (event) => {
+        this.setState({
+            depreciationSource: event.target.value
         });
     }
 
@@ -87,11 +93,11 @@ class Settlement extends Component {
                                 <DropdownButton
                                 as={InputGroup.Prepend}
                                 //variant="outline-secondary"
-                                title={this.state.rebuildEstimateSource}
+                                title={this.state.depreciationSource}
                                 id="input-group-dropdown-1"
-                            >
-                                <Dropdown.Item href="#">Independent Adjuster</Dropdown.Item>
-                                <Dropdown.Item href="#">Builder Consultant</Dropdown.Item>
+                                >
+                                <Dropdown.Item as="button" href="#" value='Independent Adjuster' onClick={ this.uupdateDepreciationSource } >Independent Adjuster</Dropdown.Item>
+                                <Dropdown.Item as="button" href="#" value='Builder Consultant' onClick={ this.updateDepreciationSource } >Builder Consultant</Dropdown.Item>
                             </DropdownButton>
                             <InputGroup.Prepend>
                                     <InputGroup.Text>Hold-Back</InputGroup.Text>
@@ -108,8 +114,9 @@ class Settlement extends Component {
                                     isValid={ touched.depreciation && !errors.depreciation }
                                 />
                             </InputGroup>
-                            <Button variant="primary" type="submit"
-                            //onClick={ handleSubmit }
+                            <Button
+                                variant="primary"
+                                type="submit"
                             >
                                 Search
                             </Button>
