@@ -17,32 +17,34 @@ const schema = yup.object({ //incomplete..complete before shipping
     deductible: yup.number().required(),
 });
 
-function newLineItem (props){
+function NewLineItem (props){
     return(
         <InputGroup
             className="mb-3"
             size="sm" >
             <FormControl
-                aria-label="Amount (to the nearest dollar)"
-                type="number"
-                placeholder="Addition FX dumps here"
-                name="rcvTotal"
-                value={ this.values.rcvTotal }
-                onChange={ this.handleChange }
-                onBlur={ this.handleBlur }
-                isValid={ this.touched.rcvTotal && !this.errors.rcvTotal } />
+                aria-label="Line Item Name"
+                type="text"
+                placeholder="Line Item Source"
+                //name="rcvTotal"
+                //value={ this.values.rcvTotal }
+                //onChange={ this.handleChange }
+                //onBlur={ this.handleBlur }
+                //isValid={ this.touched.rcvTotal && !this.errors.rcvTotal }
+                />
             <InputGroup.Prepend>
                 <InputGroup.Text>$</InputGroup.Text>
             </InputGroup.Prepend>
             <FormControl
                 aria-label="Amount (to the nearest dollar)"
                 type="number"
-                placeholder="Addition FX dumps here"
-                name="rcvTotal"
-                value={ this.values.rcvTotal }
-                onChange={ this.handleChange }
-                onBlur={ this.handleBlur }
-                isValid={ this.touched.rcvTotal && !this.errors.rcvTotal } />
+                placeholder="Dollar Amount"
+                //name="rcvTotal"
+                //value={ this.values.rcvTotal }
+                //onChange={ this.handleChange }
+                //onBlur={ this.handleBlur }
+                //isValid={ this.touched.rcvTotal && !this.errors.rcvTotal }
+                />
         </InputGroup>
     )
 }
@@ -50,7 +52,7 @@ class Settlement extends Component {
     state = {
         rebuildEstimateSource: 'Source',
         depreciationSource: 'Source',
-        estimateLineItems: [{source: 'mitigation', amt: 1.00}]
+        estimateLineItems: [{source: 'mitigation', amt: 1.00}, {source: 'mitigation', amt: 1.00}]
     }
 
     updateEstimateSource = (event) => {
@@ -65,7 +67,7 @@ class Settlement extends Component {
     }
 
     render() {
-        let {estimateLineItems} = this.state.estimateLineItems;
+        let estimateLineItems = this.state.estimateLineItems;
 
         return (
             <section className='settlement-view'>
@@ -123,6 +125,13 @@ class Settlement extends Component {
                                     onBlur={ handleBlur }
                                     isValid={ touched.rcv && !errors.rcv } />
                             </InputGroup>
+                            {
+                                estimateLineItems.map((val, indx) => { //https://itnext.io/building-a-dynamic-controlled-form-in-react-together-794a44ee552c 04.23.19
+                                    return(
+                                        <NewLineItem />
+                                    )
+                                })
+                            }
                             <InputGroup
                                 className="mb-3"
                                 size="sm" >
