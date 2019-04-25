@@ -26,8 +26,8 @@ function NewLineItem (props){
                     aria-label="Line Item Name"
                     type="text"
                     placeholder={ props.name }
-                    name={ props.name }
-                    //value={ this.values.rcvTotal }
+                    name={ props.lineItemName }
+                    value={ props.values}
                     onChange={ props.onChange }
                     onBlur={ props.onBlur}
                     isValid={ props.isValid }
@@ -39,11 +39,11 @@ function NewLineItem (props){
                     aria-label="Amount (to the nearest dollar)"
                     type="number"
                     placeholder="Dollar Amount"
-                    //name="rcvTotal"
-                    //value={ this.values.rcvTotal }
-                    //onChange={ this.handleChange }
-                    //onBlur={ this.handleBlur }
-                    //isValid={ this.touched.rcvTotal && !this.errors.rcvTotal }
+                    name={ props.lineItemAmount }
+                    value={ props.values }
+                    onChange={ props.onChange }
+                    onBlur={ props.onBlur}
+                    isValid={ props.isValid }
                     />
             </InputGroup>
     )
@@ -84,7 +84,7 @@ class Settlement extends Component {
                         rcv: 3456.98,
                         depreciation: 6789.98,
                         deductible: 5000.00,
-                        rcvTotal: 'RCV Total'
+                        rcvTotal: 23
                     }}
                 >
                 {({
@@ -129,15 +129,16 @@ class Settlement extends Component {
                                 estimateLineItems.map((val, indx) => { //https://itnext.io/building-a-dynamic-controlled-form-in-react-together-794a44ee552c 04.23.19
                                     return(
                                         <NewLineItem
-                                        aria-label="Line Item Name"
-                                        type="text"
-                                        //placeholder={ props.name }
-                                        name={`newLineItem${indx + 1}`}
-                                        //value={ this.values.rcvTotal }
-                                        onChange={ this.handleChange }
-                                        onBlur={ this.handleBlur }
-                                        //isValid={ this.touched.rcvTotal && !this.errors.rcvTotal }
-                                        //value={ this.values.rcvTotal }
+                                            aria-label="Line Item Name"
+                                            type="text"
+                                            //placeholder={ props.name }
+                                            //name="newLineItem"
+                                            lineItemName={ `lineItem${indx}` }
+                                            lineItemAmount={ `lineItemAmount${indx}` }
+                                            value={ values.newLineItem }
+                                            onChange={ handleChange }
+                                            onBlur={ handleBlur }
+                                            isValid={ touched.newLineItem && errors.newLineItem }
                                         />
                                     )
                                 })
