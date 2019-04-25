@@ -70,7 +70,7 @@ class MainView extends Component {
                             <Form.Label>Search Claim</Form.Label>
                             <Form.Control
                                 size="sm"
-                                type="text"
+                                type="search"
                                 placeholder="Enter Claim #"
                                 name="claimNumber"
                                 value={ values.claimNumber }

@@ -25,7 +25,7 @@ function NewLineItem (props){
                 <FormControl
                     aria-label="Line Item Name"
                     type="text"
-                    placeholder={ props.name }
+                    placeholder="Enter $ Source"
                     name={ props.lineItemName }
                     value={ props.values}
                     onChange={ props.onChange }
@@ -38,7 +38,7 @@ function NewLineItem (props){
                 <FormControl
                     aria-label="Amount (to the nearest dollar)"
                     type="number"
-                    placeholder="Dollar Amount"
+                    placeholder="Enter $ Amount"
                     name={ props.lineItemAmount }
                     value={ props.values }
                     onChange={ props.onChange }
@@ -133,7 +133,7 @@ class Settlement extends Component {
                                             type="text"
                                             //placeholder={ props.name }
                                             //name="newLineItem"
-                                            lineItemName={ `lineItem${indx}` }
+                                            lineItemName={ `lineItemName${indx}` }
                                             lineItemAmount={ `lineItemAmount${indx}` }
                                             value={ values.newLineItem }
                                             onChange={ handleChange }
