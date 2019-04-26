@@ -52,7 +52,11 @@ class Settlement extends Component {
     state = {
         rebuildEstimateSource: 'Source',
         depreciationSource: 'Source',
-        estimateLineItems: []
+        estimateLineItems: [],
+        deductible: null,
+        depreciation: null,
+        rcv: null,
+        rcvTotal: null
     }
 
     updateEstimateSource = (event) => {
@@ -66,12 +70,21 @@ class Settlement extends Component {
         });
     }
 
-    addLineItem = (e) => {
-        e.preventDefault();
+    addLineItem = (event) => {
+        event.preventDefault();
 
         this.setState((prevState) => ({
             estimateLineItems: [...prevState.estimateLineItems, {source: "", amt: null}],
         }));
+    }
+
+    updateValues = (values) => {
+        this.setState({
+            deductible: values.deductible,
+            depreciation: values.depreciation,
+            rcv: values.rcv,
+            rcvTotal: values.rcvTotal
+        });
     }
 
     render() {
@@ -83,8 +96,10 @@ class Settlement extends Component {
                     validationSchema={ schema }
                     onSubmit={(values, { setSubmitting }) => {
                         setTimeout(() => {
+                            this.updateValues(values);
                             alert(JSON.stringify(values, null, 2)); //alert set to verify text submissions
                             //this.updateCurrentClaimNumber(values.claimNumber);
+                            console.log(values)
                             setSubmitting(false);
                         }, 400);
                     }}
@@ -134,15 +149,16 @@ class Settlement extends Component {
                                     isValid={ touched.rcv && !errors.rcv } />
                             </InputGroup>
                             <Button
-                            variant="primary"
-                            type="submit"
-                            onClick={ this.addLineItem }>
+                                variant="primary"
+                                type="submit"
+                                onClick={ this.addLineItem }>
                                 Add Line Item
                             </Button>
                             {
                                 estimateLineItems.map((val, indx) => { //https://itnext.io/building-a-dynamic-controlled-form-in-react-together-794a44ee552c 04.23.19
                                     return(
                                         <NewLineItem
+                                            key={indx}
                                             aria-label="Line Item Name"
                                             type="text"
                                             //placeholder={ props.name }
