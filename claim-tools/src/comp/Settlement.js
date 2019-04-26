@@ -52,7 +52,7 @@ class Settlement extends Component {
     state = {
         rebuildEstimateSource: 'Source',
         depreciationSource: 'Source',
-        estimateLineItems: [{source: '', amt: null}, {source: '', amt: null}] //testing
+        estimateLineItems: []
     }
 
     updateEstimateSource = (event) => {
@@ -67,6 +67,8 @@ class Settlement extends Component {
     }
 
     addLineItem = (e) => {
+        e.preventDefault();
+
         this.setState((prevState) => ({
             estimateLineItems: [...prevState.estimateLineItems, {source: "", amt: null}],
         }));
