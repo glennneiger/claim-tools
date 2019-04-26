@@ -70,6 +70,7 @@ class Settlement extends Component {
         this.setState((prevState) => ({
             estimateLineItems: [...prevState.estimateLineItems, {source: "", amt: null}],
         }));
+    }
 
     render() {
         let estimateLineItems = this.state.estimateLineItems;
@@ -130,6 +131,12 @@ class Settlement extends Component {
                                     onBlur={ handleBlur }
                                     isValid={ touched.rcv && !errors.rcv } />
                             </InputGroup>
+                            <Button
+                            variant="primary"
+                            type="submit"
+                            onClick={ this.addLineItem }>
+                                Add Line Item
+                            </Button>
                             {
                                 estimateLineItems.map((val, indx) => { //https://itnext.io/building-a-dynamic-controlled-form-in-react-together-794a44ee552c 04.23.19
                                     return(
