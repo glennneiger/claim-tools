@@ -17,7 +17,7 @@ const schema = yup.object({ //incomplete..complete before shipping
     deductible: yup.number().required(),
 });
 
-function NewLineItem (props){
+function NewLineItem (props){ //Stateless FX for additional line items
     return(
             <InputGroup
                 className="mb-3"
@@ -85,6 +85,10 @@ class Settlement extends Component {
             rcv: values.rcv,
             rcvTotal: values.rcvTotal
         });
+    }
+
+    formatCurrency = (value) => { //https://stackoverflow.com/questions/149055/how-can-i-format-numbers-as-dollars-currency-string-in-javascript 04.27.19
+        return value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
     }
 
     render() {
@@ -160,7 +164,6 @@ class Settlement extends Component {
                                         <NewLineItem
                                             key={indx}
                                             aria-label="Line Item Name"
-                                            type="text"
                                             //placeholder={ props.name }
                                             //name="newLineItem"
                                             lineItemName={ `lineItemName${indx}` }
