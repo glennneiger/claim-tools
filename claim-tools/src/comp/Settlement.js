@@ -87,6 +87,13 @@ class Settlement extends Component {
         });
     }
 
+    totalRCV = (...values) => {
+        let total = null;
+        
+
+        return total
+    }
+
     formatCurrency = (value) => { //https://stackoverflow.com/questions/149055/how-can-i-format-numbers-as-dollars-currency-string-in-javascript 04.27.19
         return value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
     }
