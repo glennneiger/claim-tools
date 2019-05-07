@@ -60,11 +60,15 @@ class Settlement extends Component {
     }
 
     updateEstimateSource = (event) => {
+        event.preventDefault();
+
         this.setState({
             rebuildEstimateSource: event.target.value
         });
     }
     updateDepreciationSource = (event) => {
+        event.preventDefault();
+
         this.setState({
             depreciationSource: event.target.value
         });
