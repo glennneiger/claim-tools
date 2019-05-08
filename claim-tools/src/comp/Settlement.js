@@ -87,11 +87,17 @@ class Settlement extends Component {
 
     }
 
+    filterItems(arr, query) { // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter 05/08/19
+        return arr.filter(function(el) {
+            return el[0].toLowerCase().indexOf(query.toLowerCase()) !== -1;
+        })
+    }
+
     updateValues = (values) => {
 
         let entries = Object.entries(values);
 
-        let entry = entries.filter( entry => entry[0] === 'itemName0');
+        let entry = this.filterItems(entries, 'itemName');
 
         console.log(entries);
         console.log(entry);
