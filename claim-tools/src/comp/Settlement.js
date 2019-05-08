@@ -33,11 +33,12 @@ function NewLineItem (props){ //Stateless FX for additional line items
                     isValid={ props.isValid }
                     />
                 <InputGroup.Prepend>
-                    <InputGroup.Text>$</InputGroup.Text>
+                <InputGroup.Text>$</InputGroup.Text>
                 </InputGroup.Prepend>
                 <FormControl
                     aria-label="Amount (to the nearest dollar)"
                     type="number"
+                    step="0.01" //https://stackoverflow.com/questions/14650932/set-value-to-currency-in-input-type-number 05.08.19
                     placeholder="Enter $ Amount"
                     name={ props.lineItemAmount }
                     value={ props.values }
@@ -82,8 +83,18 @@ class Settlement extends Component {
         }));
     }
 
+    formatAdditionalValues = (values) => { //formats the values pulled from the additional line items drop down.
+
+    }
+
     updateValues = (values) => {
 
+        let entries = Object.entries(values);
+
+        let entry = entries.filter( entry => entry[0] === 'itemName0');
+
+        console.log(entries);
+        console.log(entry);
 
         this.setState({
             deductible: values.deductible,
