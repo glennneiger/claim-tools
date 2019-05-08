@@ -83,17 +83,19 @@ class Settlement extends Component {
     }
 
     updateValues = (values) => {
+
+
         this.setState({
             deductible: values.deductible,
             depreciation: values.depreciation,
             rcv: values.rcv,
-            rcvTotal: values.rcvTotal
+            rcvTotal: values.rcvTotal,
+            //estimateLineItems: estimateLineItems
         });
     }
 
     totalRCV = (...values) => {
         let total = null;
-        
 
         return total
     }
@@ -177,8 +179,8 @@ class Settlement extends Component {
                                             aria-label="Line Item Name"
                                             //placeholder={ props.name }
                                             //name="newLineItem"
-                                            lineItemName={ `lineItemName${indx}` }
-                                            lineItemAmount={ `lineItemAmount${indx}` }
+                                            lineItemName={ `itemName${indx}` }
+                                            lineItemAmount={ `itemAmount${indx}` }
                                             value={ values.newLineItem }
                                             onChange={ handleChange }
                                             onBlur={ handleBlur }
