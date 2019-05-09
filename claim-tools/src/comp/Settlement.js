@@ -99,12 +99,12 @@ class Settlement extends Component {
 
         let entries = Object.entries(values);
 
-        let entry = this.filterLineItemKeys(entries, 'itemName');
+        let entryName = this.filterLineItemKeys(entries, 'itemName'); //START HEREE .. need to link up item name with proper amounts
 
-        console.log(entry);
+        console.log(entryName);
 
-        for (let x = 0; x < entry.length; x += 1){
-            formattedLineItems[entry[x][1]] = '';
+        for (let x = 0; x < entryName.length; x += 1){
+            formattedLineItems[entryName[x][1]] = {source: '', index: x}; //START HEREE .. need to link up item name with proper amounts
         }
 
         console.log(formattedLineItems)
