@@ -87,7 +87,7 @@ class Settlement extends Component {
 
     }
 
-    filterItems(arr, query) { // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter 05/08/19
+    filterLineItemKeys(arr, query) { // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter 05/08/19
         return arr.filter(function(el) {
             return el[0].toLowerCase().indexOf(query.toLowerCase()) !== -1;
         })
@@ -95,12 +95,19 @@ class Settlement extends Component {
 
     updateValues = (values) => {
 
+        let formattedLineItems = {};
+
         let entries = Object.entries(values);
 
-        let entry = this.filterItems(entries, 'itemName');
+        let entry = this.filterLineItemKeys(entries, 'itemName');
 
-        console.log(entries);
         console.log(entry);
+
+        for (let x = 0; x < entry.length; x += 1){
+            formattedLineItems[entry[x][1]] = '';
+        }
+
+        console.log(formattedLineItems)
 
         this.setState({
             deductible: values.deductible,
