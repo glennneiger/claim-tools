@@ -93,21 +93,47 @@ class Settlement extends Component {
         })
     }
 
+    formatLineItems = (values) => {
+        let formattedLineItems = {},
+            entries = Object.entries(values),
+            entryName = this.filterLineItemKeys(entries, 'itemName'),
+            entryAmount =  this.filterLineItemKeys(entries, 'itemAmount');
+
+            for (let x = 0; x < entryName.length; x += 1){
+                formattedLineItems[entryName[x][1]] = {amount: null, index: x}; //START HEREE .. need to link up item name with proper amounts
+            }
+
+
+
+            return formattedLineItems;
+    }
+
     updateValues = (values) => {
 
         let formattedLineItems = {};
 
         let entries = Object.entries(values);
 
-        let entryName = this.filterLineItemKeys(entries, 'itemName'); //START HEREE .. need to link up item name with proper amounts
+        let entryName = this.filterLineItemKeys(entries, 'itemName');
+        let entryAmount =  this.filterLineItemKeys(entries, 'itemAmount');
 
         console.log(entryName);
+        console.log(entryAmount);
 
-        for (let x = 0; x < entryName.length; x += 1){
-            formattedLineItems[entryName[x][1]] = {source: '', index: x}; //START HEREE .. need to link up item name with proper amounts
+        for(let x = 0; x < entryAmount.length; x += 1){
+            for(let y = 0; y < entryName.length; y += 1){
+                if(entryName[y][0].indexOf(x.toString()) !== -1){
+                    entryName[y].push(entryAmount[y][1])
+                }
+            }
+        }//made two lists of arrays, now use the index to place the correct amount with the correct source.
+
+        for(let x = 0; x < entryName.length; x += 1){
+            formattedLineItems[entryName[x][1]] = {amount: entryName[x][2]}; //START HEREE .. need to link up item name with proper amounts
         }
 
         console.log(formattedLineItems)
+        console.log(entryName);
 
         this.setState({
             deductible: values.deductible,
