@@ -83,18 +83,14 @@ class Settlement extends Component {
         }));
     }
 
-    formatAdditionalValues = (values) => { //formats the values pulled from the additional line items drop down.
-
-    }
-
     filterLineItemKeys(arr, query) { // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter 05/08/19
         return arr.filter(function(el) {
             return el[0].toLowerCase().indexOf(query.toLowerCase()) !== -1;
         })
     }
 
-    formatLineItems = (values) => { //converts the unformatted object data to the correct "name" and "dollar amount" from the source
-        let formattedLineItems = {},
+    formatLineItems = (values) => { //converts the unformatted object data to an array of objects with correct "name" and "dollar amount" from the source
+        let formattedLineItems = [],
             entries = Object.entries(values),
             entryName = this.filterLineItemKeys(entries, 'itemName'),
             entryAmount =  this.filterLineItemKeys(entries, 'itemAmount');
@@ -108,7 +104,11 @@ class Settlement extends Component {
             }
 
             for(let x = 0; x < entryName.length; x += 1){
-                formattedLineItems[entryName[x][1]] = entryName[x][2];
+                let formattedObject = {};
+
+                formattedObject[`${entryName[x][1]}`] = entryName[x][2];
+
+                formattedLineItems.push(formattedObject);
             }
 
             return formattedLineItems;
@@ -118,14 +118,12 @@ class Settlement extends Component {
 
         let addtlLineItems = this.formatLineItems(values);
 
-        console.log(addtlLineItems);
-
         this.setState({
             deductible: values.deductible,
             depreciation: values.depreciation,
             rcv: values.rcv,
             rcvTotal: values.rcvTotal,
-            additionalItems: addtlLineItems
+            estimateLineItems: addtlLineItems
         });
     }
 
