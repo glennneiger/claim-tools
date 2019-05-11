@@ -60,6 +60,23 @@ class Settlement extends Component {
         rcvTotal: null
     }
 
+    updateRcvTotal = () => {    //tallies the estimate line items
+        let estimateLineItems = this.state.estimateLineItems,
+            objectified = Object.assign({}, ...estimateLineItems),
+            lineItemTotal = Object.keys(objectified).reduce(function(previous, key){ return previous + objectified[key].value;}, 0),
+            rcvTotal = null;
+
+        console.log(estimateLineItems);
+        console.log(objectified);
+        console.log(lineItemTotal);
+
+        rcvTotal = this.state.rcv + lineItemTotal;
+
+        this.setState({
+            rcvTotal: rcvTotal
+        })
+    }
+
     updateEstimateSource = (event) => {
         event.preventDefault();
 
@@ -83,13 +100,13 @@ class Settlement extends Component {
         }));
     }
 
-    filterLineItemKeys(arr, query) { // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter 05/08/19
+    filterLineItemKeys(arr, query) {    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter 05/08/19
         return arr.filter(function(el) {
             return el[0].toLowerCase().indexOf(query.toLowerCase()) !== -1;
         })
     }
 
-    formatLineItems = (values) => { //converts the unformatted object data to an array of objects with correct "name" and "dollar amount" from the source
+    formatLineItems = (values) => {     //converts the unformatted object data to an array of objects with correct "name" and "dollar amount" from the source
         let formattedLineItems = [],
             entries = Object.entries(values),
             entryName = this.filterLineItemKeys(entries, 'itemName'),
@@ -122,9 +139,10 @@ class Settlement extends Component {
             deductible: values.deductible,
             depreciation: values.depreciation,
             rcv: values.rcv,
-            rcvTotal: values.rcvTotal,
             estimateLineItems: addtlLineItems
         });
+
+        this.updateRcvTotal();
     }
 
     totalRCV = (...values) => {
@@ -133,7 +151,7 @@ class Settlement extends Component {
         return total
     }
 
-    formatCurrency = (value) => { //https://stackoverflow.com/questions/149055/how-can-i-format-numbers-as-dollars-currency-string-in-javascript 04.27.19
+    formatCurrency = (value) => {       //https://stackoverflow.com/questions/149055/how-can-i-format-numbers-as-dollars-currency-string-in-javascript 04.27.19
         return value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
     }
 
@@ -157,7 +175,7 @@ class Settlement extends Component {
                         rcv: 3456.98,
                         depreciation: 6789.98,
                         deductible: 5000.00,
-                        rcvTotal: 23
+                        rcvTotal: {}
                     }}
                 >
                 {({
@@ -234,7 +252,7 @@ class Settlement extends Component {
                                     type="number"
                                     placeholder="Addition FX dumps here"
                                     name="rcvTotal"
-                                    value={ values.rcvTotal }
+                                    value={ this.state.rcvTotal }
                                     onChange={ handleChange }
                                     onBlur={ handleBlur }
                                     isValid={ touched.rcvTotal && !errors.rcvTotal } />
