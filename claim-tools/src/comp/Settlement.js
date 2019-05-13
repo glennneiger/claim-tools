@@ -13,7 +13,7 @@ import * as yup from 'yup';
 const schema = yup.object({ //incomplete..complete before shipping
     rcv: yup.number().required(),
     //rcvTotal: yup.number().required(),
-    depreciation: yup.number().required(),
+    depreciation: yup.number(),
     deductible: yup.number().required(),
 });
 
@@ -58,11 +58,29 @@ class Settlement extends Component {
         depreciation: null,
         rcv: null,
         rcvTotal: null,
-        acvTotal: null
+        acvTotal: null,
+        payment: null,
+        priorPayment: false,
+        priorPaymentTotal: null
     }
 
     updatePaymentAmt = () => {
-        let paymentAmt = 
+        let payment = null,
+            paymentsTotal = this.state.priorPaymentTotal;
+
+        if (this.state.depreciation !== null){
+            payment = this.state.acvTotal - this.state.deductible;
+        } else {
+            payment = this.state.rcvTotal - this.state.deductible;
+        }
+
+        paymentsTotal += payment;
+
+        this.setState({
+            payment: payment.toFixed(2),
+            priorPayment: true,
+            priorPaymentTotal: paymentsTotal
+        })
     }
 
     updateACV = () => {
@@ -154,6 +172,7 @@ class Settlement extends Component {
 
         this.updateRCV();
         this.updateACV();
+        this.updatePaymentAmt();
     }
 
     totalRCV = (...values) => {
@@ -338,7 +357,7 @@ class Settlement extends Component {
                                     type="number"
                                     placeholder="Paid to Date"
                                     name="paidToDate"
-                                    value={ values.paidToDate }
+                                    value={ this.state.priorPayment ? this.state.priorPaymentTotal : values.paidToDate }
                                     onChange={ handleChange }
                                     onBlur={ handleBlur }
                                     isValid={ touched.paidToDate && !errors.paidToDate } />
@@ -355,7 +374,7 @@ class Settlement extends Component {
                                     type="number"
                                     placeholder="payment"
                                     name="payment"
-                                    value={ values.payment }
+                                    value={ this.state.payment }
                                     onChange={ handleChange }
                                     onBlur={ handleBlur }
                                     isValid={ touched.payment && !errors.payment } />
