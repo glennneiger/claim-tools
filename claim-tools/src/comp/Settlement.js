@@ -63,8 +63,7 @@ class Settlement extends Component {
     updateRcvTotal = () => {    //tallies the estimate line items
         let estimateLineItems = this.state.estimateLineItems,
             objectified = Object.assign({}, ...estimateLineItems),
-            lineItemTotal = Object.keys(objectified).reduce(function(previous, key){ return previous + objectified[key].value;}, 0),
-            rcvTotal = this.state.rcv;
+            rcvTotal = this.state.rcv; //current RCV
 
             for(let obj in objectified){
                 rcvTotal += objectified[obj];
@@ -73,8 +72,6 @@ class Settlement extends Component {
         console.log(estimateLineItems);
         console.log(objectified);
         console.log(rcvTotal);
-
-        rcvTotal = this.state.rcv + lineItemTotal;
 
         this.setState({
             rcvTotal: rcvTotal
