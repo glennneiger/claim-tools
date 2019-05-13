@@ -57,24 +57,33 @@ class Settlement extends Component {
         deductible: null,
         depreciation: null,
         rcv: null,
-        rcvTotal: null
+        rcvTotal: null,
+        acvTotal: null
     }
 
-    updateRcvTotal = () => {    //tallies the estimate line items
-        let estimateLineItems = this.state.estimateLineItems,
-            objectified = Object.assign({}, ...estimateLineItems),
-            rcvTotal = this.state.rcv; //current RCV
+    updatePaymentAmt = () => {
+        let paymentAmt = 
+    }
 
-            for(let obj in objectified){
-                rcvTotal += objectified[obj];
-            }
-
-        console.log(estimateLineItems);
-        console.log(objectified);
-        console.log(rcvTotal);
+    updateACV = () => {
+        let acvTotal = this.state.rcvTotal - this.state.depreciation;
 
         this.setState({
-            rcvTotal: rcvTotal
+            acvTotal: acvTotal.toFixed(2),
+        })
+    }
+
+    updateRCV = () => {    //tallies the estimate line items
+        let estimateLineItems = this.state.estimateLineItems,
+            objectified = Object.assign({}, ...estimateLineItems),
+            rcvTotal = this.state.rcv;
+
+        for(let obj in objectified){
+            rcvTotal += objectified[obj];
+        }
+
+        this.setState({
+            rcvTotal: rcvTotal.toFixed(2),
         })
     }
 
@@ -143,7 +152,8 @@ class Settlement extends Component {
             estimateLineItems: addtlLineItems
         });
 
-        this.updateRcvTotal();
+        this.updateRCV();
+        this.updateACV();
     }
 
     totalRCV = (...values) => {
@@ -173,10 +183,9 @@ class Settlement extends Component {
                         }, 400);
                     }}
                     initialValues={{
-                        rcv: 3456.98,
-                        depreciation: 6789.98,
-                        deductible: 5000.00,
-                        rcvTotal: {}
+                        rcv: 10000.45,
+                        depreciation: 1000.30,
+                        deductible: 5000.00
                     }}
                 >
                 {({
@@ -295,7 +304,7 @@ class Settlement extends Component {
                                     type="number"
                                     placeholder="Addition FX dumps here"
                                     name="acvTotal"
-                                    value={ values.acvTotal }
+                                    value={ this.state.acvTotal }
                                     onChange={ handleChange }
                                     onBlur={ handleBlur }
                                     isValid={ touched.acvTotal && !errors.acvTotal } />
