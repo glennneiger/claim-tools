@@ -64,11 +64,15 @@ class Settlement extends Component {
         let estimateLineItems = this.state.estimateLineItems,
             objectified = Object.assign({}, ...estimateLineItems),
             lineItemTotal = Object.keys(objectified).reduce(function(previous, key){ return previous + objectified[key].value;}, 0),
-            rcvTotal = null;
+            rcvTotal = this.state.rcv;
+
+            for(let obj in objectified){
+                rcvTotal += objectified[obj];
+            }
 
         console.log(estimateLineItems);
         console.log(objectified);
-        console.log(lineItemTotal);
+        console.log(rcvTotal);
 
         rcvTotal = this.state.rcv + lineItemTotal;
 
@@ -106,7 +110,7 @@ class Settlement extends Component {
         })
     }
 
-    formatLineItems = (values) => {     //converts the unformatted object data to an array of objects with correct "name" and "dollar amount" from the source
+    formatLineItems = (values) => {     //converts the unformatted object data to an array of objects with correct "name" and "dollar amount"
         let formattedLineItems = [],
             entries = Object.entries(values),
             entryName = this.filterLineItemKeys(entries, 'itemName'),
