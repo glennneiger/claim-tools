@@ -14,7 +14,7 @@ function SettlementEmail (props) {
                         size='sm'
                         as="textarea"
                         rows='7'
-                        value={ this.state.contactMade ? contactMadeEmailBody : contactNotMadeEmailBody }
+                        value={"Testing"}
                         />
                 </Form.Group>
                 <ClipIcon

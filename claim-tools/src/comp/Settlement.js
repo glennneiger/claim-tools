@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import SettlementEmail from './SettlementEmail';
+
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -180,6 +182,7 @@ class Settlement extends Component {
 
         return (
             <section className='settlement-view'>
+            <h4>Settlement Options</h4>
             <Formik
                     validationSchema={ schema }
                     onSubmit={(values, { setSubmitting }) => {
@@ -208,7 +211,7 @@ class Settlement extends Component {
                 }) => (
                     <Form
                         onSubmit={ handleSubmit } >
-                        <h4>Settlement Options</h4>
+                        <Form.Label>Settlement Inputs</Form.Label>
                             <InputGroup
                                 className="mb-3"
                                 size='sm'
