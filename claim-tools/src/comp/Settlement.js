@@ -61,7 +61,7 @@ class Settlement extends Component {
         acvTotal: null,
         payment: null,
         priorPayment: false,
-        priorPaymentTotal: null
+        priorPaymentTotal: null //will have to update another way
     }
 
     updatePaymentAmt = () => { //needs more work.. errors with toFixed.
@@ -74,7 +74,7 @@ class Settlement extends Component {
         }
 
         this.setState({
-            payment: payment.toFixed(2),
+            payment: Number(payment.toFixed(2)),
             priorPayment: true,
         })
     }
@@ -83,7 +83,7 @@ class Settlement extends Component {
         let acvTotal = this.state.rcvTotal - this.state.depreciation;
 
         this.setState({
-            acvTotal: acvTotal.toFixed(2),
+            acvTotal: Number(acvTotal.toFixed(2)),
         })
     }
 
@@ -97,7 +97,7 @@ class Settlement extends Component {
         }
 
         this.setState({
-            rcvTotal: rcvTotal.toFixed(2),
+            rcvTotal: Number(rcvTotal.toFixed(2)),
         })
     }
 
