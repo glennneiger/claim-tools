@@ -3,16 +3,36 @@ import Form from 'react-bootstrap/Form';
 import ClipIcon from './ClipIcon';
 
 
-function SettlementEmail (props) {
-    const signature = `Thanks!
+class SettlementEmail extends Component {
+    state ={
 
-    Matt
-    
-    Matthew Peters
-    Senior Examiner - Property Claims
-    Greater New York Mutual Insurance
-    200 Madison Avenue - Floor 3
-    New York, New York 10016`;
+    }
+
+    render(){
+
+        const signature = `Thanks!
+
+Matt
+
+Matthew Peters
+Senior Examiner - Property Claims
+Greater New York Mutual Insurance
+200 Madison Avenue - Floor 3
+New York, New York 10016`;
+
+        const settlementEmailOpening = `This is Matthew Peters from Greater New York Mutual Insurance. I wanted to forward you the figures from our Adjuster() which outlined our pending payment.`;
+
+        const paymentDetails = `(ACV/RCV fx) Settlement Breakdown:
+Replacement Cost Estimate: $
+Replacement Cost Total Value: $
+
+Less Depreciation Hold-Back: ($ )
+Actual Cash Value Total: $
+
+Less Deductible: ($ )
+(ACV/RCV) Payment: $ `;
+
+        const mitigationitOutstanding = `Please note, this figure does not account for mitigation services. If professional services responded, please forward their estimate for review.`;
 
 
         return (
@@ -42,5 +62,6 @@ function SettlementEmail (props) {
             </section>
         );
     }
+}
 
 export default SettlementEmail;
