@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import ClipIcon from './ClipIcon';
-
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
 
 class SettlementEmail extends Component {
     state ={
@@ -48,16 +49,31 @@ Less Deductible: ($ )
                         <Form.Check inline type="checkbox" label="Adjuster Contact" />
                         <Form.Check inline type="checkbox" label="Request Governing Docs" />
                     </Form.Group>
+                    <Tabs defaultActiveKey="settlementNote" id="uncontrolled-tab-example">
+                    <Tab eventKey="settlementNote" title="Note">
                     <Form.Control
                         size='sm'
                         as="textarea"
                         rows='7'
                         value={"Testing"}
-                        />
-                </Form.Group>
-                <ClipIcon
-                    fieldId='contactEmailBody'
-                />
+                    />
+                    <ClipIcon
+                        fieldId='contactEmailBody'
+                    />
+                    </Tab>
+                    <Tab eventKey="settlementEmail" title="Email">
+                    <Form.Control
+                        size='sm'
+                        as="textarea"
+                        rows='7'
+                        value={"Testing"}
+                    />
+                    <ClipIcon
+                        fieldId='contactEmailBody'
+                    />
+                    </Tab>
+                    </Tabs>
+                    </Form.Group>
                 </Form>
             </section>
         );
