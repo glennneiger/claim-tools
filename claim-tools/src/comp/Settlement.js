@@ -175,10 +175,6 @@ class Settlement extends Component {
         this.updatePaymentAmt();
     }
 
-    formatCurrency = (value) => {       //https://stackoverflow.com/questions/149055/how-can-i-format-numbers-as-dollars-currency-string-in-javascript 04.27.19
-        return value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-    }
-
     render() {
         let estimateLineItems = this.state.estimateLineItems;
 
@@ -387,7 +383,9 @@ class Settlement extends Component {
                     </Formik>
                     </Col>
                     <Col sm={true}>
-                        <SettlementEmail />
+                        <SettlementEmail
+                            claimData={ this.state }
+                        />
                     </Col>
                     </Row>
                 </Container>
