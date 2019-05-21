@@ -187,7 +187,7 @@ class Settlement extends Component {
                 <h4>Settlement Options</h4>
                 <Container>
                     <Row>
-                        <Col>
+                        <Col sm={true}>
                         <Formik
                             validationSchema={ schema }
                             onSubmit={(values, { setSubmitting }) => {
@@ -386,7 +386,7 @@ class Settlement extends Component {
                     )}
                     </Formik>
                     </Col>
-                    <Col>
+                    <Col sm={true}>
                         <SettlementEmail />
                     </Col>
                     </Row>
