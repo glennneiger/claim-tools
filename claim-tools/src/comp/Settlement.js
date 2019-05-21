@@ -84,11 +84,17 @@ class Settlement extends Component {
     }
 
     updateACV = () => {
-        let acvTotal = this.state.rcvTotal - this.state.depreciation;
+        let acvTotal = null;
 
-        this.setState({
-            acvTotal: Number(acvTotal.toFixed(2)),
-        })
+        if(this.state.depreciation === ''){
+            acvTotal = null;
+        } else {
+            acvTotal = this.state.rcvTotal - this.state.depreciation;
+
+            this.setState({
+                acvTotal: Number(acvTotal.toFixed(2)),
+            })
+        }
     }
 
     updateRCV = () => {    //tallies the estimate line items
@@ -112,6 +118,7 @@ class Settlement extends Component {
             rebuildEstimateSource: event.target.value
         });
     }
+
     updateDepreciationSource = (event) => {
         event.preventDefault();
 
