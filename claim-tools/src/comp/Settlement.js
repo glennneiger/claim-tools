@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SettlementEmail from './SettlementEmail';
+import SettlementDocumentation from './SettlementDocumentation';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -390,7 +390,7 @@ class Settlement extends Component {
                     </Formik>
                     </Col>
                     <Col sm={true}>
-                        <SettlementEmail
+                        <SettlementDocumentation
                             claimData={ this.state }
                         />
                     </Col>

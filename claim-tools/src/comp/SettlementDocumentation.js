@@ -4,7 +4,7 @@ import ClipIcon from './ClipIcon';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 
-class SettlementEmail extends Component {
+class SettlementDocumentation extends Component {
     state ={
 
     }
@@ -14,6 +14,7 @@ class SettlementEmail extends Component {
     }
 
     render(){
+
         const mitigationitOutstanding = `Please note, this figure does not account for mitigation services. If professional services responded, please forward their estimate for review.`;
 
         const settlementEmail = `${ this.props.claimData ? this.props.claimData.insuredContact : 'name not found'},
@@ -23,6 +24,7 @@ This is Matthew Peters from Greater New York Mutual Insurance. I wanted to forwa
 ${this.props.claimData.depreciation ? 'Actual Cash Value ("ACV")' : 'Replacement Cost Value ("RCV")'} Settlement Breakdown:
 
 ${this.props.claimData.rebuildEstimateSource ? this.props.claimData.depreciationSource : ''} Replacement Cost Estimate: $${this.props.claimData.rcv ? this.formatCurrency(this.props.claimData.rcv) : 'not found'}
+${this.props.claimData.estimateLineItems[0] ? this.props.claimData.estimateLineItems.map( item => Object.keys(item) + ': $' + Object.values(item)) : ''}
 Replacement Cost Total Value: $${this.props.claimData.rcvTotal ? this.formatCurrency(this.props.claimData.rcvTotal) : 'not found'}
 
 ${this.props.claimData.depreciation ? `Less ${this.props.claimData.depreciationSource ? this.props.claimData.depreciationSource : ''} Depreciation Hold-Back: ($${this.props.claimData.depreciation ? this.formatCurrency(this.props.claimData.depreciation) : 'not found'})
@@ -39,14 +41,13 @@ Matthew Peters
 Senior Examiner - Property Claims
 Greater New York Mutual Insurance
 200 Madison Avenue - Floor 3
-New York, New York 10016`;
+New York, New York 10016`;  //this looks like a mess only because of the formatting issues with back-ticks
 
         return (
             <section className="settlement-email-view">
                 <Form>
                     <Form.Group
                         controlId="contactEmailBody">
-                    <Form.Label>Settlement Email Body</Form.Label>
                     <Form.Group
                         controlId='emailBodyOptions'>
                         <Form.Check inline type="checkbox" label="Contact Made" />
@@ -59,7 +60,7 @@ New York, New York 10016`;
                     <Form.Control
                         size='sm'
                         as="textarea"
-                        rows='7'
+                        rows='20'
                         value={"Testing"}
                     />
                     <ClipIcon
@@ -70,7 +71,7 @@ New York, New York 10016`;
                     <Form.Control
                         size='sm'
                         as="textarea"
-                        rows='7'
+                        rows='20'
                         value={ settlementEmail }
                     />
                     <ClipIcon
@@ -85,4 +86,4 @@ New York, New York 10016`;
     }
 }
 
-export default SettlementEmail;
+export default SettlementDocumentation;
