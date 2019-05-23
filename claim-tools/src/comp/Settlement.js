@@ -58,6 +58,7 @@ class Settlement extends Component {
         rebuildEstimateSource: 'Source',
         depreciationSource: 'Source',
         estimateLineItems: [],
+        submitted: false,
         deductible: null,
         depreciation: null,
         rcv: null,
@@ -174,6 +175,7 @@ class Settlement extends Component {
         let addtlLineItems = this.formatLineItems(values);
 
         this.setState({
+            submitted: true,
             deductible: values.deductible,
             depreciation: values.depreciation,
             rcv: values.rcv,

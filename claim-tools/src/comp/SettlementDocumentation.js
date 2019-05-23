@@ -76,7 +76,7 @@ ${this.props.claimData.depreciation ? 'ACV' : 'RCV'} Payment: $${this.props.clai
                         size='sm'
                         as="textarea"
                         rows='20'
-                        value={ settlementNote }
+                        value={ this.props.claimData.submitted ? settlementNote : '' }
                     />
                     <ClipIcon
                         fieldId='contactEmailBody'
@@ -87,7 +87,7 @@ ${this.props.claimData.depreciation ? 'ACV' : 'RCV'} Payment: $${this.props.clai
                         size='sm'
                         as="textarea"
                         rows='20'
-                        value={ settlementEmail }
+                        value={ this.props.claimData.submitted ? settlementEmail : '' }
                     />
                     <ClipIcon
                         fieldId='contactEmailBody'
