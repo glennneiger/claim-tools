@@ -20,6 +20,12 @@ class SettlementDocumentation extends Component {
 
         const mitigationitOutstanding = `Please note, this figure does not account for mitigation services. If professional services responded, please forward their estimate for review.`;
 
+        const depreciationOpen = `The depreciation hold-back will be released once work has been completed and proof of your incurred expense has been reviewed.`;
+
+        const depreciationOriginalSpecs = `We are aware some units may contain betterment and improvements. As you may know, the master policy insurance is responsible for original builders/sponsors specifications, and our ${ this.props.claimData.rebuildEstimateSource === 'Independent Adjuster' ? 'adjuster' : 'builder consultant' } has written their estimate for such. Please note, the depreciation hold-back will be released when/if the property is repaired back to original builders grade specifications by the insured, and proof of the incurred expense by the insured has been reviewed.`;
+
+        const deductibleChange = `Since this loss was the result of a [input data logic], we have used your package enhancement form [input data logic] to afford coverage. With this additional coverage, your deductible changed from [original deductible] to [new deductible], for losses resulting from [cause] only.`;
+
         const settlementEmail = `${ this.props.claimData ? this.props.claimData.insuredContact : 'name not found'},
 
 This is Matthew Peters from Greater New York Mutual Insurance. I wanted to forward you the figures from our Adjuster() which outlined our pending payment.

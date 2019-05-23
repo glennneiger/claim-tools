@@ -11,6 +11,7 @@ import * as yup from 'yup';
 
 const schema = yup.object({
     dateOfLoss: yup.date().required(),
+    causeOfLoss: yup.string(),
     policyNumber: yup.string().required(),
     lossLocation: yup.string().required(),
     insuredContact: yup.string().required(),
@@ -39,6 +40,7 @@ function NewClaim (props) {
             }}
             initialValues={{ //delete once finished
                 dateOfLoss: '03/15/1986',
+                causeOfLoss: 'Water Damage',
                 policyNumber: '1131M5678',
                 lossLocation: '200 Madison Ave - New York, NY 10016',
                 insuredContact: 'Mark J',
@@ -84,6 +86,21 @@ function NewClaim (props) {
                                 isValid={ touched.dateOfLoss && !errors.dateOfLoss }
                             />
                         </Form.Group>
+                    </Col>
+                    <Col>
+                    <Form.Group controlId="exampleForm.ControlSelect1">
+                        <Form.Label>Cause of Loss</Form.Label>
+                        <Form.Control
+                            size='sm'
+                            type="text"
+                            placeholder="Cause of Loss"
+                            name="causeOfLoss"
+                            value={ values.causeOfLoss }
+                            onChange={ handleChange }
+                            onBlur={ handleBlur }
+                            isValid={ touched.causeOfLoss && !errors.causeOfLoss }
+                        />
+                    </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group controlId="exampleForm.ControlSelect1">
