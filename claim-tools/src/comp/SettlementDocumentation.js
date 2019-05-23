@@ -60,42 +60,44 @@ ${this.props.claimData.depreciation ? 'ACV' : 'RCV'} Payment: $${this.props.clai
 
         return (
             <section className="settlement-email-view">
+            { this.props.claimData.submitted ?
                 <Form>
-                    <Form.Group
-                        controlId="contactEmailBody">
-                    <Form.Group
-                        controlId='emailBodyOptions'>
-                        <Form.Check inline type="checkbox" label="Contact Made" />
-                        <Form.Check inline type="checkbox" label="Spoliation Language" />
-                        <Form.Check inline type="checkbox" label="Adjuster Contact" />
-                        <Form.Check inline type="checkbox" label="Request Governing Docs" />
-                    </Form.Group>
-                    <Tabs defaultActiveKey="settlementNote" id="uncontrolled-tab-example">
-                    <Tab eventKey="settlementNote" title="Note">
-                    <Form.Control
-                        size='sm'
-                        as="textarea"
-                        rows='20'
-                        value={ this.props.claimData.submitted ? settlementNote : '' }
-                    />
-                    <ClipIcon
-                        fieldId='contactEmailBody'
-                    />
-                    </Tab>
-                    <Tab eventKey="settlementEmail" title="Email">
-                    <Form.Control
-                        size='sm'
-                        as="textarea"
-                        rows='20'
-                        value={ this.props.claimData.submitted ? settlementEmail : '' }
-                    />
-                    <ClipIcon
-                        fieldId='contactEmailBody'
-                    />
-                    </Tab>
-                    </Tabs>
-                    </Form.Group>
-                </Form>
+                <Form.Group
+                    controlId="contactEmailBody">
+                <Form.Group
+                    controlId='emailBodyOptions'>
+                    <Form.Check inline type="checkbox" label="Contact Made" />
+                    <Form.Check inline type="checkbox" label="Spoliation Language" />
+                    <Form.Check inline type="checkbox" label="Adjuster Contact" />
+                    <Form.Check inline type="checkbox" label="Request Governing Docs" />
+                </Form.Group>
+                <Tabs defaultActiveKey="settlementNote" id="uncontrolled-tab-example">
+                <Tab eventKey="settlementNote" title="Note">
+                <Form.Control
+                    size='sm'
+                    as="textarea"
+                    rows='20'
+                    value={ this.props.claimData.submitted ? settlementNote : '' }
+                />
+                <ClipIcon
+                    fieldId='contactEmailBody'
+                />
+                </Tab>
+                <Tab eventKey="settlementEmail" title="Email">
+                <Form.Control
+                    size='sm'
+                    as="textarea"
+                    rows='20'
+                    value={ this.props.claimData.submitted ? settlementEmail : '' }
+                />
+                <ClipIcon
+                    fieldId='contactEmailBody'
+                />
+                </Tab>
+                </Tabs>
+                </Form.Group>
+            </Form>
+            : '' }
             </section>
         );
     }
