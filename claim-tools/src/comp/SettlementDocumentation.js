@@ -46,6 +46,18 @@ Greater New York Mutual Insurance
 200 Madison Avenue - Floor 3
 New York, New York 10016`;  //this looks like a mess only because of the formatting issues with back-ticks
 
+        const settlementNote = `${this.props.claimData.depreciation ? 'Actual Cash Value ("ACV")' : 'Replacement Cost Value ("RCV")'} Settlement Breakdown:
+
+${this.props.claimData.rebuildEstimateSource ? this.props.claimData.depreciationSource : ''} Replacement Cost Estimate: $${this.props.claimData.rcv ? this.formatCurrency(this.props.claimData.rcv) : 'not found'}
+${this.props.claimData.estimateLineItems[0] ? this.props.claimData.estimateLineItems.map( (item) => { return `${Object.keys(item)}: $${this.formatCurrency(Number(Object.values(item)))}
+` }).join('') : ''}
+Replacement Cost Total Value: $${this.props.claimData.rcvTotal ? this.formatCurrency(this.props.claimData.rcvTotal) : 'not found'}
+${this.props.claimData.depreciation ? `Less ${this.props.claimData.depreciationSource ? this.props.claimData.depreciationSource : ''} Depreciation Hold-Back: ($${this.props.claimData.depreciation ? this.formatCurrency(this.props.claimData.depreciation) : 'not found'})
+Actual Cash Value Total: $${this.props.claimData.acvTotal ? this.formatCurrency(this.props.claimData.acvTotal) : 'not found'}
+
+` : ``}Less Deductible: ($${this.props.claimData.deductible ? this.formatCurrency(this.props.claimData.deductible) : 'not found'})
+${this.props.claimData.depreciation ? 'ACV' : 'RCV'} Payment: $${this.props.claimData.payment ? this.formatCurrency(this.props.claimData.payment) : 'not found'}`;
+
         return (
             <section className="settlement-email-view">
                 <Form>
@@ -64,7 +76,7 @@ New York, New York 10016`;  //this looks like a mess only because of the formatt
                         size='sm'
                         as="textarea"
                         rows='20'
-                        value={"Testing"}
+                        value={ settlementNote }
                     />
                     <ClipIcon
                         fieldId='contactEmailBody'
