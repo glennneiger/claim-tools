@@ -83,11 +83,14 @@ class Settlement extends Component {
         })
     }
 
-    updateACV = () => {
+    updateACV = () => {     //bug you have to squish..
         let acvTotal = null;
 
         if(this.state.depreciation === ''){
             acvTotal = null;
+            this.setState({
+                acvTotal: null
+            })
         } else {
             acvTotal = this.state.rcvTotal - this.state.depreciation;
 

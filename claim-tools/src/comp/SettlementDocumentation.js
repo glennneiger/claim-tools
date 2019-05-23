@@ -8,6 +8,9 @@ class SettlementDocumentation extends Component {
     state ={
 
     }
+    deleteComma = (value) => {
+        return value.replace(',', '');
+    }
 
     formatCurrency = (value) => {       //https://stackoverflow.com/questions/149055/how-can-i-format-numbers-as-dollars-currency-string-in-javascript 04.27.19
         return value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
@@ -25,8 +28,8 @@ ${this.props.claimData.depreciation ? 'Actual Cash Value ("ACV")' : 'Replacement
 
 ${this.props.claimData.rebuildEstimateSource ? this.props.claimData.depreciationSource : ''} Replacement Cost Estimate: $${this.props.claimData.rcv ? this.formatCurrency(this.props.claimData.rcv) : 'not found'}
 ${this.props.claimData.estimateLineItems[0] ? this.props.claimData.estimateLineItems.map( (item) => { return `${Object.keys(item)}: $${this.formatCurrency(Number(Object.values(item)))}
-` }) : ''}Replacement Cost Total Value: $${this.props.claimData.rcvTotal ? this.formatCurrency(this.props.claimData.rcvTotal) : 'not found'}
-
+` }).join('') : ''}
+Replacement Cost Total Value: $${this.props.claimData.rcvTotal ? this.formatCurrency(this.props.claimData.rcvTotal) : 'not found'}
 ${this.props.claimData.depreciation ? `Less ${this.props.claimData.depreciationSource ? this.props.claimData.depreciationSource : ''} Depreciation Hold-Back: ($${this.props.claimData.depreciation ? this.formatCurrency(this.props.claimData.depreciation) : 'not found'})
 Actual Cash Value Total: $${this.props.claimData.acvTotal ? this.formatCurrency(this.props.claimData.acvTotal) : 'not found'}
 
