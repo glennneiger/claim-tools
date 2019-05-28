@@ -8,6 +8,7 @@ class SettlementDocumentation extends Component {
     state ={
 
     }
+
     deleteComma = (value) => {
         return value.replace(',', '');
     }

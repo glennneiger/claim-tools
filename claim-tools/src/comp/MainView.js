@@ -23,7 +23,21 @@ const schema = yup.object({
 class MainView extends Component {
     state ={
         currentClaimNumber: null,
-        currentClaimData: null
+        currentClaimData: null,
+        currentSettlementData: {
+            rebuildEstimateSource: 'Source',
+            depreciationSource: 'Source',
+            estimateLineItems: [],
+            submitted: false,
+            deductible: null,
+            depreciation: null,
+            rcv: null,
+            rcvTotal: null,
+            acvTotal: null,
+            payment: null,
+            priorPayment: false,
+            priorPaymentTotal: null
+        }
     }
 
     updateCurrentClaim = input => {

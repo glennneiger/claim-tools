@@ -10,7 +10,7 @@ class InitialContact extends Component {
         subroSpoliationLanguage: false,
         adjusterContactLine: false,
         requestDocs: false,
-        propertyType: null
+        propertyType: null // have it read the INS name and judge
     }
 
     toggleContactMade = () => {
