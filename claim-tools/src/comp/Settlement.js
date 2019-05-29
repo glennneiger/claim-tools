@@ -55,140 +55,11 @@ function NewLineItem (props){ //Stateless FX for additional line items
 }
 class Settlement extends Component {
     state = {
-        rebuildEstimateSource: 'Source',
-        depreciationSource: 'Source',
-        estimateLineItems: [],
-        submitted: false,
-        deductible: null,
-        depreciation: null,
-        rcv: null,
-        rcvTotal: null,
-        acvTotal: null,
-        payment: null,
-        priorPayment: false,
-        priorPaymentTotal: null //will have to update another way
-    }
-
-    updatePaymentAmt = () => { //needs more work.. errors with toFixed.
-        let payment = null;
-
-        if (this.state.depreciation !== null){
-            payment = this.state.acvTotal - this.state.deductible;
-        } else {
-            payment = this.state.rcvTotal - this.state.deductible;
-        }
-
-        this.setState({
-            payment: Number(payment.toFixed(2)),
-            priorPayment: true,
-        })
-    }
-
-    updateACV = () => {     //bug you have to squish..
-        let acvTotal = null;
-
-        if(this.state.depreciation === ''){
-            acvTotal = null;
-            this.setState({
-                acvTotal: null
-            })
-        } else {
-            acvTotal = this.state.rcvTotal - this.state.depreciation;
-
-            this.setState({
-                acvTotal: Number(acvTotal.toFixed(2)),
-            })
-        }
-    }
-
-    updateRCV = () => {    //tallies the estimate line items
-        let estimateLineItems = this.state.estimateLineItems,
-            objectified = Object.assign({}, ...estimateLineItems),
-            rcvTotal = this.state.rcv;
-
-        for(let obj in objectified){
-            rcvTotal += objectified[obj];
-        }
-
-        this.setState({
-            rcvTotal: Number(rcvTotal.toFixed(2)),
-        })
-    }
-
-    updateEstimateSource = (event) => {
-        event.preventDefault();
-
-        this.setState({
-            rebuildEstimateSource: event.target.value
-        });
-    }
-
-    updateDepreciationSource = (event) => {
-        event.preventDefault();
-
-        this.setState({
-            depreciationSource: event.target.value
-        });
-    }
-
-    addLineItem = (event) => {
-        event.preventDefault();
-
-        this.setState((prevState) => ({
-            estimateLineItems: [...prevState.estimateLineItems, {source: "", amt: null}],
-        }));
-    }
-
-    filterLineItemKeys(arr, query) {    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter 05/08/19
-        return arr.filter(function(el) {
-            return el[0].toLowerCase().indexOf(query.toLowerCase()) !== -1;
-        })
-    }
-
-    formatLineItems = (values) => {     //converts the unformatted object data to an array of objects with correct "name" and "dollar amount"
-        let formattedLineItems = [],
-            entries = Object.entries(values),
-            entryName = this.filterLineItemKeys(entries, 'itemName'),
-            entryAmount =  this.filterLineItemKeys(entries, 'itemAmount');
-
-            for(let x = 0; x < entryAmount.length; x += 1){ //pushes the correct amount (num) to the correct array
-                for(let y = 0; y < entryName.length; y += 1){
-                    if(entryName[y][0].indexOf(x.toString()) !== -1){
-                        entryName[y].push(entryAmount[y][1])
-                    }
-                }
-            }
-
-            for(let x = 0; x < entryName.length; x += 1){
-                let formattedObject = {};
-
-                formattedObject[`${entryName[x][1]}`] = entryName[x][2];
-
-                formattedLineItems.push(formattedObject);
-            }
-
-            return formattedLineItems;
-    }
-
-    updateValues = (values) => {
-
-        let addtlLineItems = this.formatLineItems(values);
-
-        this.setState({
-            submitted: true,
-            deductible: values.deductible,
-            depreciation: values.depreciation,
-            rcv: values.rcv,
-            estimateLineItems: addtlLineItems
-        });
-
-        this.updateRCV();
-        this.updateACV();
-        this.updatePaymentAmt();
+ //will have to update another way
     }
 
     render() {
-        let estimateLineItems = this.state.estimateLineItems;
+        let estimateLineItems = this.props.claimSettlementData.estimateLineItems;
 
         return (
             <section className='settlement-view'>
@@ -200,7 +71,7 @@ class Settlement extends Component {
                             validationSchema={ schema }
                             onSubmit={(values, { setSubmitting }) => {
                                 setTimeout(() => {
-                                    this.updateValues(values);
+                                    this.props.updateValues(values);
                                     alert(JSON.stringify(values, null, 2)); //alert set to verify text submissions
                                     //this.updateCurrentClaimNumber(values.claimNumber);
                                     console.log(values)
@@ -234,8 +105,8 @@ class Settlement extends Component {
                                             //variant="outline-secondary"
                                             title={this.state.rebuildEstimateSource}
                                             id="input-group-dropdown-1" >
-                                        <Dropdown.Item as="button" href="#" value='Independent Adjuster' onClick={ this.updateEstimateSource } >Independent Adjuster</Dropdown.Item>
-                                        <Dropdown.Item as="button" href="#" value='Builder Consultant' onClick={ this.updateEstimateSource } >Builder Consultant</Dropdown.Item>
+                                        <Dropdown.Item as="button" href="#" value='Independent Adjuster' onClick={ this.props.updateEstimateSource } >Independent Adjuster</Dropdown.Item>
+                                        <Dropdown.Item as="button" href="#" value='Builder Consultant' onClick={ this.props.updateEstimateSource } >Builder Consultant</Dropdown.Item>
                                     </DropdownButton>
                                     <InputGroup.Prepend>
                                             <InputGroup.Text>RCV</InputGroup.Text>
@@ -254,7 +125,7 @@ class Settlement extends Component {
                                     <Button
                                         variant="primary"
                                         type="submit"
-                                        onClick={ this.addLineItem }>
+                                        onClick={ this.props.addLineItem }>
                                         Add Line Item
                                     </Button>
                                     {
@@ -396,7 +267,7 @@ class Settlement extends Component {
                     </Col>
                     <Col sm={true}>
                         <SettlementDocumentation
-                            claimData={ this.state }
+                            claimData={ this.props.claimSettlementData }
                         />
                     </Col>
                     </Row>

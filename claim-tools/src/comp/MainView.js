@@ -52,6 +52,158 @@ class MainView extends Component {
         });
     }
 
+    // Settlement Comp FX's //
+
+    updatePaymentAmt = () => { //needs more work.. errors with toFixed.
+        let payment = null;
+
+        if (this.state.currentSettlementData.depreciation !== null){
+            payment = this.state.currentSettlementData.acvTotal - this.state.currentSettlementData.deductible;
+        } else {
+            payment = this.state.currentSettlementData.rcvTotal - this.state.currentSettlementData.deductible;
+        }
+
+        this.setState({
+            currentSettlementData:
+            {
+                ...this.state.currentSettlementData,
+                payment: Number(payment.toFixed(2)),
+                priorPayment: true
+            }
+        })
+    }
+
+    updateACV = () => {     //bug you have to squish..
+        let acvTotal = null;
+
+        if(this.state.currentSettlementData.depreciation === ''){
+            acvTotal = null;
+            this.setState({
+                currentSettlementData:
+                    {   ...this.state.currentSettlementData,
+                        acvTotal: null
+                    }
+            })
+        } else {
+            acvTotal = this.state.currentSettlementData.rcvTotal - this.state.currentSettlementData.depreciation;
+
+            this.setState({
+                currentSettlementData:
+                {
+                    ...this.state.currentSettlementData,
+                    acvTotal: Number(acvTotal.toFixed(2)),
+                }
+            })
+        }
+    }
+
+    updateRCV = () => {    //tallies the estimate line items
+        let estimateLineItems = this.state.currentSettlementData.estimateLineItems,
+            objectified = Object.assign({}, ...estimateLineItems),
+            rcvTotal = this.state.currentSettlementData.rcv;
+
+        for(let obj in objectified){
+            rcvTotal += objectified[obj];
+        }
+
+        this.setState({
+            currentSettlementData:
+            {
+                ...this.state.currentSettlementData,
+                rcvTotal: Number(rcvTotal.toFixed(2)),
+            }
+        })
+    }
+
+    updateEstimateSource = (event) => {
+        event.preventDefault();
+
+        this.setState({
+            currentSettlementData:
+            {
+                ...this.state.currentSettlementData,
+                rebuildEstimateSource: event.target.value
+            }
+        });
+    }
+
+    updateDepreciationSource = (event) => {
+        event.preventDefault();
+
+        this.setState({
+            currentSettlementData:
+            {
+                ...this.state.currentSettlementData,
+                depreciationSource: event.target.value
+            }
+        });
+    }
+
+    addLineItem = (event) => {
+        event.preventDefault();
+
+        this.setState((prevState) => ({
+            currentSettlementData:
+            {
+                ...this.state.currentSettlementData,
+                estimateLineItems: [...prevState.currentSettlementData.estimateLineItems, {source: "", amt: null}],
+            }
+        }));
+    }
+
+    filterLineItemKeys(arr, query) {    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter 05/08/19
+        return arr.filter(function(el) {
+            return el[0].toLowerCase().indexOf(query.toLowerCase()) !== -1;
+        })
+    }
+
+    formatLineItems = (values) => {     //converts the unformatted object data to an array of objects with correct "name" and "dollar amount"
+        let formattedLineItems = [],
+            entries = Object.entries(values),
+            entryName = this.filterLineItemKeys(entries, 'itemName'),
+            entryAmount =  this.filterLineItemKeys(entries, 'itemAmount');
+
+            for(let x = 0; x < entryAmount.length; x += 1){ //pushes the correct amount (num) to the correct array
+                for(let y = 0; y < entryName.length; y += 1){
+                    if(entryName[y][0].indexOf(x.toString()) !== -1){
+                        entryName[y].push(entryAmount[y][1])
+                    }
+                }
+            }
+
+            for(let x = 0; x < entryName.length; x += 1){
+                let formattedObject = {};
+
+                formattedObject[`${entryName[x][1]}`] = entryName[x][2];
+
+                formattedLineItems.push(formattedObject);
+            }
+
+            return formattedLineItems;
+    }
+
+    updateValues = (values) => {
+
+        let addtlLineItems = this.formatLineItems(values);
+
+        this.setState({
+            currentSettlementData:
+            {
+                ...this.state.currentSettlementData,
+                submitted: true,
+                deductible: values.deductible,
+                depreciation: values.depreciation,
+                rcv: values.rcv,
+                estimateLineItems: addtlLineItems
+            }
+        });
+
+        this.updateRCV();
+        this.updateACV();
+        this.updatePaymentAmt();
+    }
+
+
     render() {
         return (
             <section className='main-view'>
@@ -125,7 +277,12 @@ class MainView extends Component {
                                     />
                                 </Tab>
                                 <Tab eventKey="settlement" title="Settlement">
-                                    <Settlement />
+                                    <Settlement
+                                        claimSettlementData={ this.state.currentSettlementData }
+                                        updateValues={ this.updateValues }
+                                        updateEstimateSource={ this.updateEstimateSource }
+                                        addLineItem={ this.addLineItem }
+                                    />
                                 </Tab>
                                 <Tab eventKey="misc" title="Miscellaneous">
                                     <Misc />
