@@ -6,7 +6,62 @@ import Tab from 'react-bootstrap/Tab';
 
 class SettlementDocumentation extends Component {
     state ={
+        mitigationitOutstanding: false,
+        depreciationOpen: false,
+        depreciationOriginalSpecs: false,
+        deductibleChange: false
+    }
 
+    toggleMitigationOutstanding = () => {
+
+        if(this.state.mitigationOutstanding === false){
+            this.setState({
+                mitigationOutstanding: true
+            })
+        } else {
+            this.setState({
+                mitigationOutstanding: false
+            })
+        }
+    }
+
+    toggleDepreciationOpen = () => {
+
+        if(this.state.depreciationOpen === false){
+            this.setState({
+                depreciationOpen: true
+            })
+        } else {
+            this.setState({
+                depreciationOpen: false
+            })
+        }
+    }
+
+    toggleDepreciationOrigSpecs = () => {
+
+        if(this.state.depreciationOriginalSpecs === false){
+            this.setState({
+                depreciationOriginalSpecs: true
+            })
+        } else {
+            this.setState({
+                depreciationOriginalSpecs: false
+            })
+        }
+    }
+
+    toggleDeductibleChange= () => {
+
+        if(this.state.deductibleChange === false){
+            this.setState({
+                deductibleChange: true
+            })
+        } else {
+            this.setState({
+                deductibleChange: false
+            })
+        }
     }
 
     deleteComma = (value) => {
@@ -73,10 +128,10 @@ ${this.props.claimData.depreciation ? 'ACV' : 'RCV'} Payment: $${this.props.clai
                     controlId="contactEmailBody">
                 <Form.Group
                     controlId='emailBodyOptions'>
-                    <Form.Check inline type="checkbox" label="Contact Made" />
-                    <Form.Check inline type="checkbox" label="Spoliation Language" />
-                    <Form.Check inline type="checkbox" label="Adjuster Contact" />
-                    <Form.Check inline type="checkbox" label="Request Governing Docs" />
+                    <Form.Check inline type="checkbox" label="Mitigation Pending" id="mitigationPending" onChange={ this.toggleChoice }/>
+                    <Form.Check inline type="checkbox" label="Depreciation Open" />
+                    <Form.Check inline type="checkbox" label="Depreciation OrigSpec" />
+                    <Form.Check inline type="checkbox" label="Deductible Change" />
                 </Form.Group>
                 <Tabs defaultActiveKey="settlementNote" id="uncontrolled-tab-example">
                 <Tab eventKey="settlementNote" title="Note">

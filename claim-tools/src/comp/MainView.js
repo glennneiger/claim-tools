@@ -73,7 +73,7 @@ class MainView extends Component {
         })
     }
 
-    updateACV = () => {     //bug you have to squish..
+    updateACV = () => {
         let acvTotal = null;
 
         if(this.state.currentSettlementData.depreciation === ''){
