@@ -6,7 +6,7 @@ import Tab from 'react-bootstrap/Tab';
 
 class SettlementDocumentation extends Component {
     state ={
-        mitigationitOutstanding: false,
+        mitigationOutstanding: false,
         depreciationOpen: false,
         depreciationOriginalSpecs: false,
         deductibleChange: false
@@ -74,13 +74,21 @@ class SettlementDocumentation extends Component {
 
     render(){
 
-        const mitigationitOutstanding = `Please note, this figure does not account for mitigation services. If professional services responded, please forward their estimate for review.`;
+        const mitigationOutstanding = `Please note, this figure does not account for mitigation services. If professional services responded, please forward their estimate for review.
 
-        const depreciationOpen = `The depreciation hold-back will be released once work has been completed and proof of your incurred expense has been reviewed.`;
+`;
 
-        const depreciationOriginalSpecs = `We are aware some units may contain betterment and improvements. As you may know, the master policy insurance is responsible for original builders/sponsors specifications, and our ${ this.props.claimData.rebuildEstimateSource === 'Independent Adjuster' ? 'adjuster' : 'builder consultant' } has written their estimate for such. Please note, the depreciation hold-back will be released when/if the property is repaired back to original builders grade specifications by the insured, and proof of the incurred expense by the insured has been reviewed.`;
+        const depreciationOpen = `The depreciation hold-back will be released once work has been completed and proof of your incurred expense has been reviewed.
 
-        const deductibleChange = `Since this loss was the result of a [input data logic], we have used your package enhancement form [input data logic] to afford coverage. With this additional coverage, your deductible changed from [original deductible] to [new deductible], for losses resulting from [cause] only.`;
+`;
+
+        const depreciationOriginalSpecs = `We are aware some units may contain betterment and improvements. As you may know, the master policy insurance is responsible for original builders/sponsors specifications, and our ${ this.props.claimData.rebuildEstimateSource === 'Independent Adjuster' ? 'adjuster' : 'builder consultant' } has written their estimate for such. Please note, the depreciation hold-back will be released when/if the property is repaired back to original builders grade specifications by the insured, and proof of the incurred expense by the insured has been reviewed.
+
+`;
+
+        const deductibleChange = `Since this loss was the result of a [input data logic], we have used your package enhancement form [input data logic] to afford coverage. With this additional coverage, your deductible changed from [original deductible] to [new deductible], for losses resulting from [cause] only.
+
+`;
 
         const settlementEmail = `${ this.props.claimData ? this.props.claimData.insuredContact : 'name not found'},
 
@@ -98,6 +106,7 @@ Actual Cash Value Total: $${this.props.claimData.acvTotal ? this.formatCurrency(
 ` : ``}Less Deductible: ($${this.props.claimData.deductible ? this.formatCurrency(this.props.claimData.deductible) : 'not found'})
 ${this.props.claimData.depreciation ? 'ACV' : 'RCV'} Payment: $${this.props.claimData.payment ? this.formatCurrency(this.props.claimData.payment) : 'not found'}
 
+${this.state.mitigationOutstanding ? mitigationOutstanding : ''}${this.state.depreciationOpen ? depreciationOpen : ''}${this.state.depreciationOriginalSpecs ? depreciationOriginalSpecs : ''}${this.state.deductibleChange ? deductibleChange : ''}
 Thanks!
 
 Matt
@@ -128,10 +137,10 @@ ${this.props.claimData.depreciation ? 'ACV' : 'RCV'} Payment: $${this.props.clai
                     controlId="contactEmailBody">
                 <Form.Group
                     controlId='emailBodyOptions'>
-                    <Form.Check inline type="checkbox" label="Mitigation Pending" id="mitigationPending" onChange={ this.toggleChoice }/>
-                    <Form.Check inline type="checkbox" label="Depreciation Open" />
-                    <Form.Check inline type="checkbox" label="Depreciation OrigSpec" />
-                    <Form.Check inline type="checkbox" label="Deductible Change" />
+                    <Form.Check inline type="checkbox" label="Mitigation Pending" onChange={ this.toggleMitigationOutstanding }/>
+                    <Form.Check inline type="checkbox" label="Depreciation Open" onChange={ this.toggleDepreciationOpen }/>
+                    <Form.Check inline type="checkbox" label="Depreciation OrigSpec" onChange={ this.toggleDepreciationOrigSpecs }/>
+                    <Form.Check inline type="checkbox" label="Deductible Change" onChange={ this.toggleDeductibleChange }/>
                 </Form.Group>
                 <Tabs defaultActiveKey="settlementNote" id="uncontrolled-tab-example">
                 <Tab eventKey="settlementNote" title="Note">
