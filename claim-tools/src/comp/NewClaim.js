@@ -34,6 +34,7 @@ function NewClaim (props) {
             validationSchema={ schema }
             onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
+                    alert(JSON.stringify(values, null, 2)); //alert set to verify text submissions
                     props.updateCurrentClaim(values); // passes the data "up" to MainView's state
                     setSubmitting(false);
                 }, 400);

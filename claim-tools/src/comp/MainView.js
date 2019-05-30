@@ -52,6 +52,17 @@ class MainView extends Component {
         });
     }
 
+    // String Formatting FX's //
+
+    toTitleCase = (str) => {          //https://stackoverflow.com/questions/196972/convert-string-to-title-case-with-javascript 05.30.19
+        return str.replace(
+            /\w\S*/g,
+            function(txt) {
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            }
+        );
+    }
+
     // Settlement Comp FX's //
 
     updatePaymentAmt = () => { //needs more work.. errors with toFixed.
