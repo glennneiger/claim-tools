@@ -186,6 +186,10 @@ class MainView extends Component {
 
         let addtlLineItems = this.formatLineItems(values);
 
+        if (values.depreciation === ''){
+            values.depreciation = 0;
+        }
+
         this.setState({
             currentSettlementData:
             {
