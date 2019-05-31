@@ -81,7 +81,10 @@ New York, New York 10016`;
                                     />
                                 </Tab>
                                 <Tab eventKey="settlement-email" title="Settlement">
-
+                                    <SettlementEmail
+                                        claimData={ this.props.claimSettlementData }
+                                        signature={ signature }
+                                    />
                                 </Tab>
                             </Tabs>
                         </section>

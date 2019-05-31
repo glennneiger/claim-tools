@@ -306,7 +306,9 @@ class MainView extends Component {
                                     <Misc />
                                 </Tab>
                                 <Tab eventKey="emailTemplates" title="Emails">
-                                    <Emails />
+                                    <Emails
+                                        claimSettlementData={ this.state.currentSettlementData }
+                                    />
                                 </Tab>
                             </Tabs>
                         </section>
