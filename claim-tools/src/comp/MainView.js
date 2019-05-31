@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 
 import NewClaim from './NewClaim';
-import ViewWindow from './ViewWindow';
-import InitialContact from './InitialContact';
 import Settlement from './Settlement';
-import Misc from './Misc';
 
 import Emails from './emails/Emails';
 import Notes from './notes/Notes';
@@ -272,9 +269,9 @@ class MainView extends Component {
             <section className='staged-claim'>
                 <h2>Staged Claim:</h2>
                 <p>Insured: {this.state.currentClaimData ? this.state.currentClaimData.insuredName : 'No claim Staged'}</p>
-                <p>Claim Number: {this.state.currentClaimNumber ? this.state.currentClaimNumber : 'No Claim Staged'}</p>
-                <p>Policy Number: {this.state.currentClaimData ? this.state.currentClaimData.policyNumber : 'No Claim Staged'}</p>
-                <p>Date of Loss: {this.state.currentClaimData ? this.state.currentClaimData.dateOfLoss : 'No Claim Staged'}</p>
+                <p>Claim: {this.state.currentClaimNumber ? this.state.currentClaimNumber : 'No Claim Staged'}</p>
+                <p>Policy: {this.state.currentClaimData ? this.state.currentClaimData.policyNumber : 'No Claim Staged'}</p>
+                <p>DOL: {this.state.currentClaimData ? this.state.currentClaimData.dateOfLoss : 'No Claim Staged'}</p>
 
             </section>
             <Container>

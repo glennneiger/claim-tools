@@ -65,11 +65,12 @@ New York, New York 10016`;
                             <Tabs defaultActiveKey="email-options" id="email-options">
                                 <Tab eventKey="first-contact-email" title="First Contact">
                                     <InitialContactEmail
+                                        claimData={ this.props.claimData }
                                         signature={ signature }
                                     />
                                 </Tab>
                                 <Tab eventKey="settlement-email" title="Settlement">
-                                    <SettlementEmail
+                                    <SettlementEmail //need to add claimData && claimSettlementData respectivly
                                         claimData={ this.props.claimSettlementData }
                                         signature={ signature }
                                     />
