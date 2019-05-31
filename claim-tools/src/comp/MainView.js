@@ -289,12 +289,6 @@ class MainView extends Component {
                                         toTitleCase={ this.toTitleCase }
                                     />
                                 </Tab>
-                                <Tab eventKey="firstContact" title="First Contact">
-                                    <InitialContact
-                                        claimNumber={ this.state.currentClaimNumber }
-                                        claimData={ this.state.currentClaimData }
-                                    />
-                                </Tab>
                                 <Tab eventKey="settlement" title="Settlement">
                                     <Settlement
                                         claimSettlementData={ this.state.currentSettlementData }
@@ -311,6 +305,7 @@ class MainView extends Component {
                                 </Tab>
                                 <Tab eventKey="emailTemplates" title="Emails">
                                     <Emails
+                                        claimData={ this.state.currentClaimData }
                                         claimSettlementData={ this.state.currentSettlementData }
                                     />
                                 </Tab>

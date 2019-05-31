@@ -259,16 +259,11 @@ class Settlement extends Component {
                                     <Button
                                         variant="primary"
                                         type="submit" >
-                                        Generate
+                                        Update
                                     </Button>
                             </Form>
                     )}
                     </Formik>
-                    </Col>
-                    <Col sm={true}>
-                        <SettlementDocumentation
-                            claimData={ this.props.claimSettlementData }
-                        />
                     </Col>
                     </Row>
                 </Container>
