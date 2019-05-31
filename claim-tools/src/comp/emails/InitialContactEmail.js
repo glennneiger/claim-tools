@@ -101,6 +101,18 @@ ${this.props.signature}`;
                 <Form.Group
                     controlId="contactEmailBody">
                     <Form.Label>Email Body</Form.Label>
+                    <Form.Group
+                    controlId="contactEmailSubject">
+                    <Form.Label>Subject</Form.Label>
+                    <Form.Control
+                        size="sm"
+                        type="text"
+                        value={ `Contact Email - GNY Claim: ${ this.props.claimNumber ? this.props.claimNumber : 'Claim Not Found' } - ${ this.props.claimData ? this.props.claimData.insuredName : 'Insured Name Not Found' } - Location: ${ this.props.claimData ? this.props.claimData.insuredAddress : 'Address Not Found' }`}
+                        />
+                    <ClipIcon
+                        fieldId='contactEmailSubject'
+                    />
+                    </Form.Group>
                         <Form.Group
                             controlId='emailBodyOptions'>
                             <Form.Check inline type="checkbox" label="Contact Made" onChange={ this.toggleContactMade }/>

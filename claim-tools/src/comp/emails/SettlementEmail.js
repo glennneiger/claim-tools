@@ -125,6 +125,18 @@ ${this.props.claimData.depreciation ? 'ACV' : 'RCV'} Payment: $${this.props.clai
             <section className="settlement-email-view">
                 <Form>
                 <Form.Group
+                controlId="contactEmailSubject">
+                <Form.Label>Subject</Form.Label>
+                <Form.Control
+                    size="sm"
+                    type="text"
+                    value={ `Settlement Email - GNY Claim: ${ this.props.claimNumber ? this.props.claimNumber : 'Claim Not Found' } - ${ this.props.claimData ? this.props.claimData.insuredName : 'Insured Name Not Found' } - Location: ${ this.props.claimData ? this.props.claimData.insuredAddress : 'Address Not Found' }`}
+                    />
+                <ClipIcon
+                    fieldId='contactEmailSubject'
+                />
+                </Form.Group>
+                <Form.Group
                     controlId="settlement-email-container">
                     <Form.Group
                         controlId='settlement-email-container__options'>

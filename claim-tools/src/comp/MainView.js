@@ -7,6 +7,7 @@ import Settlement from './Settlement';
 import Misc from './Misc';
 
 import Emails from './emails/Emails';
+import Notes from './notes/Notes';
 
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
@@ -303,7 +304,10 @@ class MainView extends Component {
                                     />
                                 </Tab>
                                 <Tab eventKey="noteTemplates" title="Notes">
-                                    <Misc />
+                                    <Notes
+                                        claimData={ this.state.currentClaimData }
+                                        claimSettlementData={ this.state.currentSettlementData }
+                                    />
                                 </Tab>
                                 <Tab eventKey="emailTemplates" title="Emails">
                                     <Emails

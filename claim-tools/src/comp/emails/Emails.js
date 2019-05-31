@@ -57,18 +57,6 @@ New York, New York 10016`;
                         fieldId='emailCarbonCopy'
                     />
                 </Form.Group>
-                <Form.Group
-                    controlId="contactEmailSubject">
-                    <Form.Label>Subject</Form.Label>
-                    <Form.Control
-                        size="sm"
-                        type="text"
-                        value={ `Contact Email - GNY Claim: ${ this.props.claimNumber ? this.props.claimNumber : 'Claim Not Found' } - ${ this.props.claimData ? this.props.claimData.insuredName : 'Insured Name Not Found' } - Location: ${ this.props.claimData ? this.props.claimData.insuredAddress : 'Address Not Found' }`}
-                        />
-                    <ClipIcon
-                        fieldId='contactEmailSubject'
-                    />
-                </Form.Group>
                 <Container>
                 <Row>
                     <Col>
