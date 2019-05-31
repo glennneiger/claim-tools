@@ -6,6 +6,8 @@ import InitialContact from './InitialContact';
 import Settlement from './Settlement';
 import Misc from './Misc';
 
+import Emails from './emails/Emails';
+
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import Container from 'react-bootstrap/Container';
@@ -304,7 +306,7 @@ class MainView extends Component {
                                     <Misc />
                                 </Tab>
                                 <Tab eventKey="emailTemplates" title="Emails">
-                                    <Misc />
+                                    <Emails />
                                 </Tab>
                             </Tabs>
                         </section>
