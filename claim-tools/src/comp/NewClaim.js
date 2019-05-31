@@ -40,22 +40,47 @@ function NewClaim (props) {
                 }, 400);
             }}
             initialValues={{ //delete once finished
-                dateOfLoss: '03/15/1986',
+                dateOfLoss: '2019-03-15',
                 causeOfLoss: 'Water Damage',
                 policyNumber: '1131M5678',
-                lossLocation: '200 Madison Ave - New York, NY 10016',
+                lossLocation: '300 MILL POND LN, SALISBURY, MD 21804-2104',
                 insuredContact: 'Mark J',
-                insuredNumber: 4567890,
+                insuredNumber: '8458007006',
                 insuredEmail: 'mp.legend@gmail.com',
-                insuredAddress: '200 Madison Ave - New York, NY 10016',
+                insuredAddress: `MILL POND VILLAGE LLC
+MILL POND VILLAGE PLAZA
+C/O BREITSTONE & CO INC
+534 WILLOW AVE
+CEDARHURST NY 11516-2078`,
                 brokerContact: 'Mark J',
-                brokerNumber:  4567890,
+                brokerNumber:  '8458007006',
                 brokerEmail: 'mp.legend@gmail.com',
-                brokerAddress: '200 Madison Ave - New York, NY 10016',
+                brokerAddress: `GENATT V, LLC
+DBA GENATT SPECIALTY INSURANCE SERV
+3333 NEW HYDE PARK ROAD
+NEW HYDE PARK NY 11042`,
                 adjusterContact: 'Mark J',
-                adjusterNumber:  4567890,
+                adjusterNumber:  '8458007006',
                 adjusterEmail: 'mp.legend@gmail.com',
-                policyForms: ';)'
+                policyForms: `GNY 004               09-91    COMMERCIAL PROPERTY COVERAGE PART
+GNY 005               06-91    COMMERCIAL PROPERTY COVERAGE PART        
+GNYCP 03              01-18    EQUIPMENT BREAKDOWN ENHANCEMENT ENDT     
+CYBER DEC             04-16    CYBERONE COVERAGE SUPPLEMENTAL DECL      
+CYBER MD              04-16    MARYLAND CHANGES AMENDATORY ENDORSEMENT  
+DATAC                 11-14    DATA COMPROMISE COVERAGE FORM            
+DATAC DEC             11-14    DATA COMPROMISE SUPPLEMENTAL DECLARATION 
+DATAC MD              11-14    MARYLAND CHANGES                         
+GNY CYBER             04-16    CYBERONE COVERAGE FORM                   
+HABIT 01              03-11    HABITATIONAL SPECIALTY COVERAGE ENDT     
+ORD 01                03-02    BLANKET ORDINANCE OR LAW COVERAGE ENDT   
+PACKCW                02-11    ENHANCED PROPERTY COVERAGE ENDORSEMENT   
+PF-LOSS               01-97    SCHEDULE OF LOSS PAYEE(S)                
+PF-MORT               01-97    SCHEDULE OF MORTGAGE HOLDER(S)           
+CP 00 30              06-07    BUSINESS INCOME COVERAGE (&/EX EXP)      
+CP 10 32              08-08    WATER EXCLUSION ENDORSEMENT              
+FLODEC                02-05    FLOOD COVERAGE SCHEDULE AND CHANGES      
+CP 10 65              06-07    FLOOD COVERAGE ENDORSEMENT               
+CP 00 10              06-07    BUILDING & PERSONAL PROPERTY COVERAGE  `
             }}
         >
         {({
