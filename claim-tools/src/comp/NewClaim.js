@@ -33,6 +33,10 @@ function NewClaim (props) {
         <Formik
             validationSchema={ schema }
             onSubmit={(values, { setSubmitting }) => {
+                values.lossLocation = props.toTitleCase(values.lossLocation);
+                values.insuredAddress = props.toTitleCase(values.insuredAddress);
+                values.brokerAddress = props.toTitleCase(values.brokerAddress);
+
                 setTimeout(() => {
                     alert(JSON.stringify(values, null, 2)); //alert set to verify text submissions
                     props.updateCurrentClaim(values); // passes the data "up" to MainView's state
@@ -333,7 +337,7 @@ CP 00 10              06-07    BUILDING & PERSONAL PROPERTY COVERAGE  `
                     </Col>
                 </Form.Row>
                 <Form.Group controlId="exampleForm.ControlSelect2">
-                    <Form.Label>Forms</Form.Label>
+                    <Form.Label>Property Forms</Form.Label>
                     <Form.Control
                         size='sm'
                         as="textarea"

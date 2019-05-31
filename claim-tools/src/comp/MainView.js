@@ -283,6 +283,7 @@ class MainView extends Component {
                                 <Tab eventKey="initialInfo" title="Initial Info">
                                     <NewClaim
                                         updateCurrentClaim={ this.updateCurrentClaim }
+                                        toTitleCase={ this.toTitleCase }
                                     />
                                 </Tab>
                                 <Tab eventKey="firstContact" title="First Contact">
@@ -299,7 +300,10 @@ class MainView extends Component {
                                         addLineItem={ this.addLineItem }
                                     />
                                 </Tab>
-                                <Tab eventKey="misc" title="Miscellaneous">
+                                <Tab eventKey="noteTemplates" title="Notes">
+                                    <Misc />
+                                </Tab>
+                                <Tab eventKey="emailTemplates" title="Emails">
                                     <Misc />
                                 </Tab>
                             </Tabs>
