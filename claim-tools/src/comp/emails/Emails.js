@@ -69,7 +69,7 @@ New York, New York 10016`;
                                         signature={ signature }
                                     />
                                 </Tab>
-                                <Tab eventKey="settlement-email" title="Settlement">
+                                <Tab eventKey="settlement-email" title="Settlement" disabled={ !this.props.claimSettlementData.submitted }>
                                     <SettlementEmail //need to add claimData && claimSettlementData respectivly
                                         claimData={ this.props.claimSettlementData }
                                         signature={ signature }

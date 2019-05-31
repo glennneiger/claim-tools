@@ -38,12 +38,12 @@ ${this.props.claimSettlementData.depreciation ? 'ACV' : 'RCV'} Payment: $${this.
                 <Form.Group
                     controlId="note-body">
                 <Tabs defaultActiveKey="settlementNote" id="uncontrolled-tab-example">
-                <Tab eventKey="settlementNote" title="Settlement">
+                <Tab eventKey="settlementNote" title="Settlement" disabled={ !this.props.claimSettlementData.submitted }>
                 <Form.Control
                     size='sm'
                     as="textarea"
                     rows='20'
-                    value={ this.props.claimSettlementData.submitted ? settlementNote : '' }
+                    value={ this.props.claimSettlementData.submitted ? settlementNote : 'Stage a Settlement First Bucko!!' }
                 />
                 <ClipIcon
                     fieldId='contactEmailBody'
